@@ -629,6 +629,50 @@
                 alert('Per favore inserisci un indirizzo email valido.');
                 return;
             }
+// Add at top of your script
+const SUPABASE_URL = 'https://kknatbcoccuosikwyxps.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtrbmF0YmNvY2N1b3Npa3d5eHBzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg5MTc4MTYsImV4cCI6MjA3NDQ5MzgxNn0.8jUHTWvmaBU2UUv9XztTgMkxP5aUybRNkTPkzJWUs5A'
+
+// Replace your email submission function
+document.getElementById('submit-email').addEventListener('click', async function() {
+    const email = document.getElementById('email-input').value;
+    
+    if (!email || !isValidEmail(email)) {
+        alert('Per favore inserisci un indirizzo email valido.');
+        return;
+    }
+    
+    try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/email_landing_paturi`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            },
+            body: JSON.stringify({
+                email: email,
+                language: localStorage.getItem('fa_lang') || 'it'
+            })
+        });
+        
+        if (response.ok) {
+            // Success
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            document.getElementById('email-input').value = '';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        } else {
+            throw new Error('Failed to save email');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Errore nel salvataggio. Riprova più tardi.');
+    }
+});
             
             // Google Analytics Event
             gtag('event', 'email_submission', {
