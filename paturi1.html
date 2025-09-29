@@ -1,19 +1,1 @@
 
-        // Feedback buttons - open Google Form
-        const feedbackFormUrl = 'https://forms.gle/ZEjSz7MQonEqop8N9';
-        
-        document.getElementById('feedback-btn').addEventListener('click', function() {
-            window.open(feedbackFormUrl, '_blank');
-        });
-        
-        document.getElementById('feedback-bottom').addEventListener('click', function() {
-            window.open(feedbackFormUrl, '_blank');
-        });
-
-        function isValidEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-    </script>
-</body>
-</html>
