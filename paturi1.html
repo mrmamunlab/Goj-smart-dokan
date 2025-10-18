@@ -1181,6 +1181,14 @@ document.querySelectorAll('.lang-item').forEach(item => {
         // Store language preference
         localStorage.setItem('aslivo_lang', lang);
     });
+
+// Fix language button click
+document.getElementById('langBtn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    const langList = document.getElementById('langList');
+    langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
+});
+
 });
 
     </script>
