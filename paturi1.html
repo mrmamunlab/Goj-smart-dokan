@@ -6,6 +6,7 @@
     <title>Aslivo — Recognize, find, save & Simplyfing</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #8B5CF6;
@@ -1182,11 +1183,14 @@ document.querySelectorAll('.lang-item').forEach(item => {
         localStorage.setItem('aslivo_lang', lang);
     });
 
-// Fix language button click
 document.getElementById('langBtn').addEventListener('click', function(e) {
     e.stopPropagation();
     const langList = document.getElementById('langList');
-    langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
+    if (langList.style.display === 'block') {
+        langList.style.display = 'none';
+    } else {
+        langList.style.display = 'block';
+    }
 });
 
 });
