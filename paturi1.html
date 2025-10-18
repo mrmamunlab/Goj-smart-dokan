@@ -1151,6 +1151,24 @@
     // How it works
     document.getElementById('howItWorks').addEventListener('click', function() {
         alert('How it works:\n1) Send name/photo/barcode in your language → 2) Aslivo finds local matches + badges + prices → 3) Choose, reserve or go to store.');
+
+// Fix all buttons
+document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+    document.getElementById('controls').classList.toggle('active');
+});
+
+document.getElementById('startBot').addEventListener('click', function() {
+    window.open('https://t.me/aslivo_bot', '_blank');
+});
+
+document.getElementById('tgOpen').addEventListener('click', function() {
+    window.open('https://t.me/aslivo_bot', '_blank');
+});
+
+document.getElementById('howItWorks').addEventListener('click', function() {
+    alert('How it works:\n1) Send name/photo/barcode in your language → 2) Aslivo finds local matches + badges + prices → 3) Choose, reserve or go to store.');
+});
+
     });
 </script>
 </body>
