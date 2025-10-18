@@ -1,260 +1,841 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Aslivo — Recognize, find, save & simplifying</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --primary:#6A3FB5; /* purple */
-      --primary-2:#4A2B84;
-      --muted:#6B7280;
-      --bg:#ffffff;
-      --card:#FAF8FF;
-      --text:#0F172A;
-      --radius:14px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paturi — Find products like home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --primary-light: #A78BFA;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 14px;
+        }
 
-    /* Bengali rendering class */
-    .bn { font-family: 'Noto Sans Bengali', sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
 
-    .wrap{max-width:1100px;margin:36px auto;padding:20px}
-    header{display:flex;justify-content:space-between;align-items:center}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px}
-    .brand h1{font-size:18px;margin:0}
-    .brand p{margin:0;color:var(--muted);font-size:13px}
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* single language icon */
-    .controls{display:flex;gap:12px;align-items:center}
-    .lang-btn{background:#fff;border:1px solid rgba(15,23,42,0.06);padding:8px 10px;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:8px}
-    .lang-list{position:absolute;right:20px;top:72px;background:#fff;border:1px solid rgba(15,23,42,0.06);box-shadow:0 10px 30px rgba(16,24,40,0.06);border-radius:12px;padding:8px;display:none}
-    .lang-item{padding:8px 12px;border-radius:8px;cursor:pointer;font-size:14px}
-    .lang-item:hover{background:var(--card)}
+        /* Bengali rendering class */
+        .bn {
+            font-family: 'Noto Sans Bengali', sans-serif;
+        }
 
-    .hero{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
-    .hero .title{font-size:32px;font-weight:700}
-    .hero .subtitle{color:var(--muted);margin-top:8px}
-    .hero .lead{margin-top:12px;color:var(--muted)}
-    .cta-row{display:flex;gap:12px;margin-top:14px}
-    .btn{padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-    .btn-primary{background:var(--primary);color:#fff}
-    .btn-ghost{background:#fff;border:1px solid rgba(15,23,42,0.06)}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    /* clear three core features */
-    .cores{display:grid;gap:12px;margin-top:20px}
-    @media(min-width:900px){.cores{grid-template-columns:1fr 1fr 1fr}}
-    .core{background:#fff;padding:18px;border-radius:12px;border:1px solid rgba(15,23,42,0.04);box-shadow:0 12px 30px rgba(16,24,40,0.06);display:flex;flex-direction:column;gap:10px}
-    .core.primary{border:2px solid rgba(106,63,181,0.12);transform:scale(1.02)}
-    .core .icon{width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,var(--card),rgba(106,63,181,0.06));display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--primary-2)}
-    .core h3{margin:0}
-    .core p{margin:0;color:var(--muted)}
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
 
-    .secondary{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:18px}
-    .feat{background:#fff;padding:12px;border-radius:10px;border:1px solid rgba(15,23,42,0.04);box-shadow:0 8px 20px rgba(16,24,40,0.04);display:flex;gap:12px}
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
 
-    .signup{margin-top:22px;background:#fff;padding:16px;border-radius:12px;border:1px solid rgba(15,23,42,0.04);box-shadow:0 8px 20px rgba(16,24,40,0.04)}
-    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
 
-    @media(max-width:780px){.hero .title{font-size:22px}}
-  </style>
+        .logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .brand h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .brand p {
+            margin: 0;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: #fff;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            padding: 8px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            box-shadow: 0 4px 6px rgba(139, 92, 246, 0.2);
+        }
+
+        .lang-list {
+            position: absolute;
+            right: 20px;
+            top: 72px;
+            background: #fff;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+            border-radius: 12px;
+            padding: 8px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lang-item {
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .lang-item:hover {
+            background: var(--bg-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .hero .lead {
+            margin-top: 12px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .btn {
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 0;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-ghost {
+            background: #fff;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+        }
+
+        .btn-ghost:hover {
+            background: var(--bg-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-light), transparent);
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cores {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 900px) {
+            .cores {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .core {
+            background: #fff;
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .core:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .core.primary {
+            border: 2px solid rgba(106, 63, 181, 0.12);
+            transform: scale(1.02);
+            animation: pulse 2s infinite;
+        }
+
+        .core .icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, var(--bg-light), rgba(106, 63, 181, 0.06));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .core:hover .icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .core h3 {
+            margin: 0;
+        }
+
+        .core p {
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        /* Secondary Features */
+        .secondary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .feat {
+            background: #fff;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
+            display: flex;
+            gap: 12px;
+            transition: transform 0.3s;
+        }
+
+        .feat:hover {
+            transform: translateY(-5px);
+        }
+
+        .ficon {
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        /* Signup Section */
+        .signup {
+            margin-top: 22px;
+            background: #fff;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .signup h3 {
+            margin-bottom: 10px;
+        }
+
+        .signup p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .signup-input {
+            display: flex;
+            gap: 8px;
+            max-width: 520px;
+            margin-top: 10px;
+        }
+
+        .signup-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+        .signup-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 28px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 13px;
+            padding: 20px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 780px) {
+            .hero {
+                flex-direction: column;
+                padding: 120px 0 60px;
+            }
+            
+            .hero .title {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+            
+            .cta-row {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
     <header>
-      <div class="brand">
-        <div class="logo">P</div>
-        <div>
-          <h1>Aslivo</h1>
-          <p id="brand-tag">Recognize, find, save & Simplifying</p>
-        </div>
-      </div>
+        <div class="container">
+            <div class="navbar">
+                <div class="brand">
+                    <div class="logo">P</div>
+                    <div>
+                        <h1>Aslivo</h1>
+                        <p id="brand-tag">Recognize, find, save & Simplifying</p>
+                    </div>
+                </div>
 
-      <div class="controls">
-        <div style="position:relative">
-          <button class="lang-btn" id="langBtn">🌐 <span id="langLabel">EN</span></button>
-          <div class="lang-list" id="langList" role="menu" aria-hidden="true">
-            <div class="lang-item" data-lang="en">🇬🇧 English</div>
-            <div class="lang-item" data-lang="bn">🇧🇩 বাংলা (Bangla)</div>
-            <div class="lang-item" data-lang="ur">🇵🇰 اردو (Urdu)</div>
-            <div class="lang-item" data-lang="ps">🇦🇫 پښتو (Pashto)</div>
-            <div class="lang-item" data-lang="hi">🇮🇳 हिन्दी (Hindi)</div>
-            <div class="lang-item" data-lang="ar">🇸🇦 العربية (Arabic)</div>
-            <div class="lang-item" data-lang="id">🇮🇩 Bahasa (Indonesian)</div>
-            <div class="lang-item" data-lang="tl">🇵🇭 Filipino (Tagalog)</div>
-          </div>
-        </div>
+                <div class="controls">
+                    <div style="position:relative">
+                        <button class="lang-btn" id="langBtn">🌐 <span id="langLabel">EN</span></button>
+                        <div class="lang-list" id="langList" role="menu" aria-hidden="true">
+                            <div class="lang-item" data-lang="en">🇬🇧 English</div>
+                            <div class="lang-item" data-lang="bn">🇧🇩 বাংলা (Bangla)</div>
+                            <div class="lang-item" data-lang="ur">🇵🇰 اردو (Urdu)</div>
+                            <div class="lang-item" data-lang="ps">🇦🇫 پښتو (Pashto)</div>
+                            <div class="lang-item" data-lang="hi">🇮🇳 हिन्दी (Hindi)</div>
+                            <div class="lang-item" data-lang="ar">🇸🇦 العربية (Arabic)</div>
+                            <div class="lang-item" data-lang="id">🇮🇩 Bahasa (Indonesian)</div>
+                            <div class="lang-item" data-lang="tl">🇵🇭 Filipino (Tagalog)</div>
+                        </div>
+                    </div>
 
-        <button class="btn btn-ghost" id="tgOpen">Open on Telegram</button>
-      </div>
+                    <button class="btn btn-ghost" id="tgOpen">Open on Telegram</button>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
-      <section class="hero" id="hero">
-        <div>
-          <div class="title" id="heroTitle">Don't lose the product you want because of language.</div>
-          <div class="subtitle" id="heroSubtitle">Type in your language, scan a barcode or upload a photo — Paturi finds the closest local match, shows price, badges (Halal/Vegan/Bio) and community ratings.</div>
-          <div class="lead" id="heroLead">No guesswork: get clear product matches, trusted badges and local offers — in your language.</div>
+    <main class="container">
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <div class="title" id="heroTitle">Don't lose the product you want because of language.</div>
+                <div class="subtitle" id="heroSubtitle">Type in your language, scan a barcode or upload a photo — Paturi finds the closest local match, shows price, badges (Halal/Vegan/Bio) and community ratings.</div>
+                <div class="lead" id="heroLead">No guesswork: get clear product matches, trusted badges and local offers — in your language.</div>
 
-          <div class="cta-row">
-            <button class="btn btn-primary" id="startBot">Start on Telegram</button>
-            <button class="btn btn-ghost" id="howItWorks">How it works</button>
-          </div>
-        </div>
-      </section>
+                <div class="cta-row">
+                    <button class="btn btn-primary" id="startBot">Start on Telegram</button>
+                    <button class="btn btn-ghost" id="howItWorks">How it works</button>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <div class="hero-image-placeholder">
+                        <i class="fas fa-shopping-bag" style="font-size: 4rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <!-- three core features -->
-      <section class="cores" aria-label="Core features">
-        <div class="core primary" id="core1">
-          <div style="display:flex;gap:12px;align-items:center"><div class="icon">🔎</div><div><h3 id="c1-title">Recognize & Match (core)</h3><p id="c1-desc">Upload a photo, scan barcode or write in your language. Paturi identifies the product and finds trusted local equivalents, with badges and community reviews.</p></div></div>
-        </div>
+        <!-- three core features -->
+        <section class="features" aria-label="Core features">
+            <div class="cores">
+                <div class="core primary" id="core1">
+                    <div style="display:flex;gap:12px;align-items:center">
+                        <div class="icon">🔎</div>
+                        <div>
+                            <h3 id="c1-title">Recognize & Match (core)</h3>
+                            <p id="c1-desc">Upload a photo, scan barcode or write in your language. Paturi identifies the product and finds trusted local equivalents, with badges and community reviews.</p>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="core" id="core2">
-          <div style="display:flex;gap:12px;align-items:center"><div class="icon">⚡</div><div><h3 id="c2-title">Pre-order & Fresh arrivals</h3><p id="c2-desc">Reserve fresh arrivals or limited stock from nearby ethnic shops — get notified when they arrive.</p></div></div>
-        </div>
+                <div class="core" id="core2">
+                    <div style="display:flex;gap:12px;align-items:center">
+                        <div class="icon">⚡</div>
+                        <div>
+                            <h3 id="c2-title">Pre-order & Fresh arrivals</h3>
+                            <p id="c2-desc">Reserve fresh arrivals or limited stock from nearby ethnic shops — get notified when they arrive.</p>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="core" id="core3">
-          <div style="display:flex;gap:12px;align-items:center"><div class="icon">🏷️</div><div><h3 id="c3-title">Exclusive local offers</h3><p id="c3-desc">App-only deals and community bundles from local stores that match your culture and taste.</p></div></div>
-        </div>
-      </section>
+                <div class="core" id="core3">
+                    <div style="display:flex;gap:12px;align-items:center">
+                        <div class="icon">🏷️</div>
+                        <div>
+                            <h3 id="c3-title">Exclusive local offers</h3>
+                            <p id="c3-desc">App-only deals and community bundles from local stores that match your culture and taste.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <!-- secondary features -->
-      <section class="secondary" aria-label="secondary features">
-        <div class="feat"><div class="ficon">💰</div><div><h4>Smart-savings</h4><p>Monthly insights and price comparisons to save on repeated buys.</p></div></div>
-        <div class="homendnat"><div class="ficon">🔔</div><div><h4>Wishlist alerts</h4><p>Get notified when wishlist items drop in price or go on sale nearby.</p></div></div>
-        <div class="feat"><div class="ficon">🤝</div><div><h4>Request to shop</h4><p>Ask local shopkeepers to stock products your community wants.</p></div></div>
-        <div class="feat"><div class="ficon">📦</div><div><h4>Smart Fridge</h4><p>Track purchased items and expiry to reduce waste and remind repurchases.</p></div></div>
-      </section>
+        <!-- secondary features -->
+        <section class="secondary" aria-label="secondary features">
+            <div class="feat">
+                <div class="ficon">💰</div>
+                <div>
+                    <h4>Smart-savings</h4>
+                    <p>Monthly insights and price comparisons to save on repeated buys.</p>
+                </div>
+            </div>
+            <div class="feat">
+                <div class="ficon">🔔</div>
+                <div>
+                    <h4>Wishlist alerts</h4>
+                    <p>Get notified when wishlist items drop in price or go on sale nearby.</p>
+                </div>
+            </div>
+            <div class="feat">
+                <div class="ficon">🤝</div>
+                <div>
+                    <h4>Request to shop</h4>
+                    <p>Ask local shopkeepers to stock products your community wants.</p>
+                </div>
+            </div>
+            <div class="feat">
+                <div class="ficon">📦</div>
+                <div>
+                    <h4>Smart Fridge</h4>
+                    <p>Track purchased items and expiry to reduce waste and remind repurchases.</p>
+                </div>
+            </div>
+        </section>
 
-      <section class="signup" id="signup">
-        <h3 id="pilotTitle">Join the Bologna pilot</h3>
-        <p id="pilotSub">Enter your email and we'll send the Telegram link and short instructions in your language. Limited spots.</p>
-        <div style="display:flex;gap:8px;max-width:520px;margin-top:10px"><input id="email" placeholder="Your email" style="flex:1;padding:10px;border:1px solid rgba(15,23,42,0.06);border-radius:8px"><button class="btn btn-primary" id="emailBtn">Get link</button></div>
-      </section>
+        <section class="signup" id="signup">
+            <h3 id="pilotTitle">Join the Bologna pilot</h3>
+            <p id="pilotSub">Enter your email and we'll send the Telegram link and short instructions in your language. Limited spots.</p>
+            <div class="signup-input">
+                <input id="email" placeholder="Your email">
+                <button class="btn btn-primary" id="emailBtn">Get link</button>
+            </div>
+        </section>
     </main>
 
     <footer>Beta — Built for migrant communities in Bologna • Privacy respected</footer>
-  </div>
 
-<script>
-  const TG_BOT_LINK = 'https://t.me/YourPaturiBot'; // replace with real bot
+    <script>
+        const TG_BOT_LINK = 'https://t.me/YourPaturiBot'; // replace with real bot
 
-  const TRANSLATIONS = {
-    en: {
-      heroTitle: "Don't lose the product you want because of language.",
-      heroSubtitle: "Type in your language, scan a barcode or upload a photo — Paturi finds the closest local match, shows price, badges (Halal/Vegan/Bio) and community ratings.",
-      heroLead: "No guesswork: get clear product matches, trusted badges and local offers — in your language.",
-      startBot: 'Start on Telegram', howItWorks: 'How it works', pilotTitle: 'Join the Bologna pilot', pilotSub: "Enter your email and we'll send the Telegram link and short instructions in your language. Limited spots.", emailBtn: 'Get link',
-      c1Title: 'Recognize & Match (core)', c1Desc: 'Upload a photo, scan barcode or write in your language. Paturi finds trusted local equivalents with badges and community reviews.',
-      c2Title: 'Pre-order & Fresh arrivals', c2Desc: 'Reserve fresh arrivals or limited stock from nearby ethnic shops — get notified when they arrive.',
-      c3Title: 'Exclusive local offers', c3Desc: 'App-only deals and community bundles from local stores that match your culture and taste.'
-    },
+        const TRANSLATIONS = {
+            en: {
+                heroTitle: "Don't lose the product you want because of language.",
+                heroSubtitle: "Type in your language, scan a barcode or upload a photo — Paturi finds the closest local match, shows price, badges (Halal/Vegan/Bio) and community ratings.",
+                heroLead: "No guesswork: get clear product matches, trusted badges and local offers — in your language.",
+                startBot: 'Start on Telegram',
+                howItWorks: 'How it works',
+                pilotTitle: 'Join the Bologna pilot',
+                pilotSub: "Enter your email and we'll send the Telegram link and short instructions in your language. Limited spots.",
+                emailBtn: 'Get link',
+                c1Title: 'Recognize & Match (core)',
+                c1Desc: 'Upload a photo, scan barcode or write in your language. Paturi finds trusted local equivalents with badges and community reviews.',
+                c2Title: 'Pre-order & Fresh arrivals',
+                c2Desc: 'Reserve fresh arrivals or limited stock from nearby ethnic shops — get notified when they arrive.',
+                c3Title: 'Exclusive local offers',
+                c3Desc: 'App-only deals and community bundles from local stores that match your culture and taste.'
+            },
 
-    bn: heroTitleeroTitle: 'আর নয় ভাষা বিভ্রাট, ইতালিতে দেশীয় বা যেকোনো পন্যের বিকল্প খোজা এখন সহজ',
-      heroSubtitle: 'আপনি বাংলায় পন্যটির নাম বা ধরন লিখুন অথবা পন্য হাতে থাকলে সেটির বারকোড স্ক্যান করুন বা ছবি আপলোড করুন ——স্থানীয় কোন বিকল্পটি আপনার জন্য ঠিক, দাম কত এবং কমিউনিটি কী বলছে সব রকমের তথ্য মুহুর্তে দেখতে পারবেন।',
-      heroLead: 'আশঙ্কা-জটিলতা ছাড়া কেনাকাটা — স্পষ্ট বিকল্প match, halal/Vegan/Bio badges-সহ স্থানীয় মূল্য তুলনা এবং অফার নিজ ভাষায় দেখুন।',
-      startBot: 'টেলিগ্রামে শুরু করুন', howItWorks: 'কিভাবে কাজ করে', pilotTitle: 'বোলোনিয়াতে পাইলট launch-এ যোগ দিন', pilotSub: 'ইমেইল দিন—আমরা টেলিগ্রাম লিংক ও সহজ নির্দেশনা পাঠাব।', emailBtn: 'লিংক পেতে ক্লিক করুন',
-      c1Title: 'পণ্য শনাক্ত ও মিল (মূল)', c1Desc: 'ছবি আপলোড করুন বা বারকোড স্ক্যান করুন — Aslivo স্থানীয় বিশ্বস্ত বিকল্প দেখাবে, রেটিং ও ব্যাজসহ।',
-      c2Title: 'প্রি-অর্ডার ও তাজা আগমন', c2Desc: 'নিকটস্থ দোকান থেকে টুকিটাকি বা সীমিত পণ্য রিজার্ভ করুন—তাজা আসলে নোটিফাই পাবেন।',
-      c3Title: 'স্থানীয় এক্সক্লুসিভ অফার', c3Desc: 'শুধু app-এই পাবেন লোকাল দেশীয় ও মার্কেটগুলো থেকে বিশেষ '
-    },
+            bn: {
+                heroTitle: 'আর নয় ভাষা বিভ্রাট, ইতালিতে দেশীয় বা যেকোনো পন্যের বিকল্প খোজা এখন সহজ',
+                heroSubtitle: 'আপনি বাংলায় পন্যটির নাম বা ধরন লিখুন অথবা পন্য হাতে থাকলে সেটির বারকোড স্ক্যান করুন বা ছবি আপলোড করুন ——স্থানীয় কোন বিকল্পটি আপনার জন্য ঠিক, দাম কত এবং কমিউনিটি কী বলছে সব রকমের তথ্য মুহুর্তে দেখতে পারবেন।',
+                heroLead: 'আশঙ্কা-জটিলতা ছাড়া কেনাকাটা — স্পষ্ট বিকল্প match, halal/Vegan/Bio badges-সহ স্থানীয় মূল্য তুলনা এবং অফার নিজ ভাষায় দেখুন।',
+                startBot: 'টেলিগ্রামে শুরু করুন',
+                howItWorks: 'কিভাবে কাজ করে',
+                pilotTitle: 'বোলোনিয়াতে পাইলট launch-এ যোগ দিন',
+                pilotSub: 'ইমেইল দিন—আমরা টেলিগ্রাম লিংক ও সহজ নির্দেশনা পাঠাব।',
+                emailBtn: 'লিংক পেতে ক্লিক করুন',
+                c1Title: 'পণ্য শনাক্ত ও মিল (মূল)',
+                c1Desc: 'ছবি আপলোড করুন বা বারকোড স্ক্যান করুন — Aslivo স্থানীয় বিশ্বস্ত বিকল্প দেখাবে, রেটিং ও ব্যাজসহ।',
+                c2Title: 'প্রি-অর্ডার ও তাজা আগমন',
+                c2Desc: 'নিকটস্থ দোকান থেকে টুকিটাকি বা সীমিত পণ্য রিজার্ভ করুন—তাজা আসলে নোটিফাই পাবেন।',
+                c3Title: 'স্থানীয় এক্সক্লুসিভ অফার',
+                c3Desc: 'শুধু app-এই পাবেন লোকাল দেশীয় ও মার্কেটগুলো থেকে বিশেষ '
+            },
 
-    ur: {
-      heroTitle: 'زبان کی وجہ سے جس چیز کی آپ کو یاد ہے وہ کھوئیے مت۔',
-      heroSubtitle: 'اپنی زبان میں ٹائپ کریں، بارکوڈ اسکین کریں یا تصویر اپ لوڈ کریں — Paturi آپ کو مقامی مماثل، قیمت اور کمیونٹی کی رائے بتائے گا۔',
-      heroLead: 'غلط فہمی نہیں — واضح میچ، حلال/ویگن بیجز اور مقامی آفرز آپکی زبان میں۔',
-      startBot: 'ٹیلیگرام شروع کریں', howItWorks: 'یہ کیسے کام کرتا ہے', pilotTitle: 'بولونیا پائلٹ میں شامل ہوں', pilotSub: 'اپنا ای میل دیں — ہم ٹیلگرام لنک اور آسان ہدایات آپکی زبان میں بھیجیں گے۔', emailBtn: 'لنک حاصل کریں',
-      c1Title: 'پہچان اور ملاپ (مرکزی)', c1Desc: 'تصویر اپ لوڈ کریں یا بارکوڈ اسکین کریں — Paturi قابلِ اعتماد مقامی متبادل دکھائے گا، رائے اور بیجز کے ساتھ۔',
-      c2Title: 'پری آرڈر اور تازہ رسد', c2Desc: 'قریبی دکانوں سے محدود اسٹاک محفوظ کریں — جب تازہ آئٹمز آئیں نوٹیفائی ہوں۔',
-      c3Title: 'مقامی خصوصی آفرز', c3Desc: 'ایپ پر مخصوص ڈیلز اور کمیونٹی بنڈلز۔'
-    },
+            ur: {
+                heroTitle: 'زبان کی وجہ سے جس چیز کی آپ کو یاد ہے وہ کھوئیے مت۔',
+                heroSubtitle: 'اپنی زبان میں ٹائپ کریں، بارکوڈ اسکین کریں یا تصویر اپ لوڈ کریں — Paturi آپ کو مقامی مماثل، قیمت اور کمیونٹی کی رائے بتائے گا۔',
+                heroLead: 'غلط فہمی نہیں — واضح میچ، حلال/ویگن بیجز اور مقامی آفرز آپکی زبان میں۔',
+                startBot: 'ٹیلیگرام شروع کریں',
+                howItWorks: 'یہ کیسے کام کرتا ہے',
+                pilotTitle: 'بولونیا پائلٹ میں شامل ہوں',
+                pilotSub: 'اپنا ای میل دیں — ہم ٹیلگرام لنک اور آسان ہدایات آپکی زبان میں بھیجیں گے۔',
+                emailBtn: 'لنک حاصل کریں',
+                c1Title: 'پہچان اور ملاپ (مرکزی)',
+                c1Desc: 'تصویر اپ لوڈ کریں یا بارکوڈ اسکین کریں — Paturi قابلِ اعتماد مقامی متبادل دکھائے گا، رائے اور بیجز کے ساتھ۔',
+                c2Title: 'پری آرڈر اور تازہ رسد',
+                c2Desc: 'قریبی دکانوں سے محدود اسٹاک محفوظ کریں — جب تازہ آئٹمز آئیں نوٹیفائی ہوں۔',
+                c3Title: 'مقامی خصوصی آفرز',
+                c3Desc: 'ایپ پر مخصوص ڈیلز اور کمیونٹی بنڈلز۔'
+            },
 
-    ps: {
-      heroTitle: 'د ژبې له امله هغه توکی مه له لاسه ورکوئ چې په ذهن کې مو دی.',
-      heroSubtitle: 'په خپله ژبه ولیکئ، بارکوډ سکین کړئ یا عکس اپلوډ کړئ — Paturi به وښيي کوم محلي بدیل ستاسو لپاره مناسب دی، قیمت او د ټولنې نظرونه.',
-      heroLead: 'بې پلوه او واضح میچونه، حلال/ویګن بیجونه او ځایي وړاندیزونه ستاسو په ژبه کې.',
-      startBot: 'په ټیلیګرام کې پیل کړئ', howItWorks: 'څنګه کار کوي', pilotTitle: 'د بولونیا پائلټ کې ګډون وکړئ', pilotSub: 'خپل ایمیل ولیکئ — موږ به په خپل ژبه لنک او ساده لارښوونې واستوو.', emailBtn: 'لینک ترلاسه کړئ',
-      c1Title: 'پیژندنه او میچ (اساسي)', c1Desc: 'انځور اپلوډ کړئ یا بارکوډ سکین کړئ — Paturi باوري سیمه ییز بدیلونه، درجه بندي او بیجونه ښیي.',
-      c2Title: 'پری-آرډر او تازه راورسېدل', c2Desc: 'د محلي هټۍ څخه محدود توکي وساتئ — تازه راغلل خبرتیا ترلاسه کړئ.',
-      c3Title: 'ځایي ځانګړي وړاندیزونه', c3Desc: 'د اپ-یوازې معاملې او ټولنې بنډلونه.'
-    },
+            ps: {
+                heroTitle: 'د ژبې له امله هغه توکی مه له لاسه ورکوئ چې په ذهن کې مو دی.',
+                heroSubtitle: 'په خپله ژبه ولیکئ، بارکوډ سکین کړئ یا عکس اپلوډ کړئ — Paturi به وښيي کوم محلي بدیل ستاسو لپاره مناسب دی، قیمت او د ټولنې نظرونه.',
+                heroLead: 'بې پلوه او واضح میچونه، حلال/ویګن بیجونه او ځایي وړاندیزونه ستاسو په ژبه کې.',
+                startBot: 'په ټیلیګرام کې پیل کړئ',
+                howItWorks: 'څنګه کار کوي',
+                pilotTitle: 'د بولونیا پائلټ کې ګډون وکړئ',
+                pilotSub: 'خپل ایمیل ولیکئ — موږ به په خپل ژبه لنک او ساده لارښوونې واستوو.',
+                emailBtn: 'لینک ترلاسه کړئ',
+                c1Title: 'پیژندنه او میچ (اساسي)',
+                c1Desc: 'انځور اپلوډ کړئ یا بارکوډ سکین کړئ — Paturi باوري سیمه ییز بدیلونه، درجه بندي او بیجونه ښیي.',
+                c2Title: 'پری-آرډر او تازه راورسېدل',
+                c2Desc: 'د محلي هټۍ څخه محدود توکي وساتئ — تازه راغلل خبرتیا ترلاسه کړئ.',
+                c3Title: 'ځایي ځانګړي وړاندیزونه',
+                c3Desc: 'د اپ-یوازې معاملې او ټولنې بنډلونه.'
+            },
 
-    hi: {
-      heroTitle: 'भाषा की वजह से जो प्रोडक्ट आप सोच रहे हैं उसे खोइए मत।',
-      heroSubtitle: 'अपनी भाषा में लिखें, बारकोड स्कैन करें या फोटो अपलोड करें — Paturi निकटतम स्थानीय विकल्प, कीमत और कम्युनिटी रिव्यू दिखाता है।',
-      heroLead: 'साफ़ मिल, भरोसेमंद बैज और स्थानीय ऑफर — आपकी भाषा में।',
-      startBot: 'Telegram शुरू करें', howItWorks: 'कैसे काम करता है', pilotTitle: 'बोलोग्ना पायलट में शामिल हों', pilotSub: 'अपना ईमेल दें — हम Telegram लिंक और आसान निर्देश आपकी भाषा में भेजेंगे।', emailBtn: 'लिंक पाएं',
-      c1Title: 'पहचानें और मिलाएँ (कोर)', c1Desc: 'फोटो अपलोड करें या बारकोड स्कैन करें — Paturi भरोसेमंद स्थानीय विकल्प दिखाएगा, रेटिंग्स और बैज के साथ।',
-      c2Title: 'प्री-ऑर्डर व ताज़ा आगमन', c2Desc: 'नज़दीकी दुकानों से सीमित स्टॉक रिज़र्व करें — जैसे ही ताज़ा आए सूचना मिलें।',
-      c3Title: 'स्थानीय एक्सक्लूसिव ऑफ़र', c3Desc: 'ऐप-विशेष डील और कम्युनिटी बंडल।'
-    },
+            hi: {
+                heroTitle: 'भाषा की वजह से जो प्रोडक्ट आप सोच रहे हैं उसे खोइए मत।',
+                heroSubtitle: 'अपनी भाषा में लिखें, बारकोड स्कैन करें या फोटो अपलोड करें — Paturi निकटतम स्थानीय विकल्प, कीमत और कम्युनिटी रिव्यू दिखाता है।',
+                heroLead: 'साफ़ मिल, भरोसेमंद बैज और स्थानीय ऑफर — आपकी भाषा में।',
+                startBot: 'Telegram शुरू करें',
+                howItWorks: 'कैसे काम करता है',
+                pilotTitle: 'बोलोग्ना पायलट में शामिल हों',
+                pilotSub: 'अपना ईमेल दें — हम Telegram लिंक और आसान निर्देश आपकी भाषा में भेजेंगे।',
+                emailBtn: 'लिंक पाएं',
+                c1Title: 'पहचानें और मिलाएँ (कोर)',
+                c1Desc: 'फोटो अपलोड करें या बारकोड स्कैन करें — Paturi भरोसेमंद स्थानीय विकल्प दिखाएगा, रेटिंग्स और बैज के साथ।',
+                c2Title: 'प्री-ऑर्डर व ताज़ा आगमन',
+                c2Desc: 'नज़दीकी दुकानों से सीमित स्टॉक रिज़र्व करें — जैसे ही ताज़ा आए सूचना मिलें।',
+                c3Title: 'स्थानीय एक्सक्लूसिव ऑफ़र',
+                c3Desc: 'ऐप-विशेष डील और कम्युनिटी बंडल।'
+            },
 
-    ar: {
-      heroTitle: 'لا تفقد المنتج الذي تبحث عنه بسبب اللغة.',
-      heroSubtitle: 'اكتب بلغتك، امسح الباركود أو ارفع صورة — Paturi يعرض البدائل المحلية مع الأسعار وتقييمات المجتمع.',
-      heroLead: 'مطابقات واضحة، شارات موثوقة وعروض محلية — بلغتك.',
-      startBot: 'ابدأ على تيليجرام', howItWorks: 'كيف يعمل', pilotTitle: 'انضم لتجربة بولونيا', pilotSub: 'أدخل بريدك الإلكتروني — سنرسل رابط تيليجرام وتعليمات قصيرة بلغتك.', emailBtn: 'الحصول على الرابط',
-      c1Title: 'التعرّف والمطابقة (أساسي)', c1Desc: 'حمّل صورة أو امسح الباركود — Paturi يعرض بدائل محلية موثوقة مع تقييمات وشارات.',
-      c2Title: 'الطلب المسبق والوافدون الطازجون', c2Desc: 'احجز مخزونًا محدودًا من المتاجر المحلية — وستصلك إشعارات عند وصول المنتجات الطازجة.',
-      c3Title: 'عروض محلية حصرية', c3Desc: 'عروض خاصة على التطبيق وحزم مخصصة للمجتمع.'
-    },
+            ar: {
+                heroTitle: 'لا تفقد المنتج الذي تبحث عنه بسبب اللغة.',
+                heroSubtitle: 'اكتب بلغتك، امسح الباركود أو ارفع صورة — Paturi يعرض البدائل المحلية مع الأسعار وتقييمات المجتمع.',
+                heroLead: 'مطابقات واضحة، شارات موثوقة وعروض محلية — بلغتك.',
+                startBot: 'ابدأ على تيليجرام',
+                howItWorks: 'كيف يعمل',
+                pilotTitle: 'انضم لتجربة بولونيا',
+                pilotSub: 'أدخل بريدك الإلكتروني — سنرسل رابط تيليجرام وتعليمات قصيرة بلغتك.',
+                emailBtn: 'الحصول على الرابط',
+                c1Title: 'التعرّف والمطابقة (أساسي)',
+                c1Desc: 'حمّل صورة أو امسح الباركود — Paturi يعرض بدائل محلية موثوقة مع تقييمات وشارات.',
+                c2Title: 'الطلب المسبق والوافدون الطازجون',
+                c2Desc: 'احجز مخزونًا محدودًا من المتاجر المحلية — وستصلك إشعارات عند وصول المنتجات الطازجة.',
+                c3Title: 'عروض محلية حصرية',
+                c3Desc: 'عروض خاصة على التطبيق وحزم مخصصة للمجتمع.'
+            },
 
-    id: {
-      heroTitle: 'Jangan kehilangan produk yang Anda cari karena bahasa.',
-      heroSubtitle: 'Ketik dalam bahasa Anda, pindai barcode atau unggah foto — Paturi menemukan padanan lokal, harga, dan ulasan komunitas.',
-      heroLead: 'Hasil yang jelas: kecocokan produk, badge tepercaya, dan penawaran lokal — dalam bahasa Anda.',
-      startBot: 'Mulai di Telegram', howItWorks: 'Cara kerja', pilotTitle: 'Ikut pilot Bologna', pilotSub: 'Masukkan email Anda — kami akan mengirim tautan Telegram dan instruksi singkat dalam bahasa Anda.', emailBtn: 'Dapatkan tautan',
-      c1Title: 'Kenali & Cocokkan (inti)', c1Desc: 'Unggah foto atau pindai barcode — Paturi menampilkan padanan lokal tepercaya dengan ulasan dan badge.',
-      c2Title: 'Pre-order & Kedatangan Segar', c2Desc: 'Pesan stok terbatas dari toko etnis terdekat — dapatkan notifikasi saat barang tiba.',
-      c3Title: 'Penawaran Lokal Eksklusif', c3Desc: 'Penawaran khusus aplikasi dan bundel komunitas.'
-    },
+            id: {
+                heroTitle: 'Jangan kehilangan produk yang Anda cari karena bahasa.',
+                heroSubtitle: 'Ketik dalam bahasa Anda, pindai barcode atau unggah foto — Paturi menemukan padanan lokal, harga, dan ulasan komunitas.',
+                heroLead: 'Hasil yang jelas: kecocokan produk, badge tepercaya, dan penawaran lokal — dalam bahasa Anda.',
+                startBot: 'Mulai di Telegram',
+                howItWorks: 'Cara kerja',
+                pilotTitle: 'Ikut pilot Bologna',
+                pilotSub: 'Masukkan email Anda — kami akan mengirim tautan Telegram dan instruksi singkat dalam bahasa Anda.',
+                emailBtn: 'Dapatkan tautan',
+                c1Title: 'Kenali & Cocokkan (inti)',
+                c1Desc: 'Unggah foto atau pindai barcode — Paturi menampilkan padanan lokal tepercaya dengan ulasan dan badge.',
+                c2Title: 'Pre-order & Kedatangan Segar',
+                c2Desc: 'Pesan stok terbatas dari toko etnis terdekat — dapatkan notifikasi saat barang tiba.',
+                c3Title: 'Penawaran Lokal Eksklusif',
+                c3Desc: 'Penawaran khusus aplikasi dan bundel komunitas.'
+            },
 
-    tl: {
-      heroTitle: 'Huwag mawala ang produkto na nasa isip mo dahil sa wika.',
-      heroSubtitle: 'Magsulat sa iyong wika, i-scan ang barcode o mag-upload ng larawan — Paturi hahanapin ang pinakamalapit na lokal na katumbas, presyo at review.',
-      heroLead: 'Malinaw na tugma, trusted badges at lokal na alok — sa iyong wika.',
-      startBot: 'Magsimula sa Telegram', howItWorks: 'Paano gumagana', pilotTitle: 'Sumali sa Bologna pilot', pilotSub: 'Ilagay ang iyong email — ipapadala namin ang Telegram link at maikling instruksyon sa iyong wika.', emailBtn: 'Kunin ang link',
-      c1Title: 'Kilalanin & Itugma (core)', c1Desc: 'Mag-upload ng larawan o i-scan ang barcode — ipinapakita ng Paturi ang pinagkakatiwalaang lokal na katumbas, may reviews at badge.',
-      c2Title: 'Pre-order & Fresh arrivals', c2Desc: 'Mag-reserve ng limitadong stock mula sa kalapit na ethnic shop — makakatanggap ka ng notification kapag dumating.',
-      c3Title: 'Exclusive local offers', c3Desc: 'App-only deals at community bundles mula sa lokal na tindahan.'
-    }
-  };
+            tl: {
+                heroTitle: 'Huwag mawala ang produkto na nasa isip mo dahil sa wika.',
+                heroSubtitle: 'Magsulat sa iyong wika, i-scan ang barcode o mag-upload ng larawan — Paturi hahanapin ang pinakamalapit na lokal na katumbas, presyo at review.',
+                heroLead: 'Malinaw na tugma, trusted badges at lokal na alok — sa iyong wika.',
+                startBot: 'Magsimula sa Telegram',
+                howItWorks: 'Paano gumagana',
+                pilotTitle: 'Sumali sa Bologna pilot',
+                pilotSub: 'Ilagay ang iyong email — ipapadala namin ang Telegram link at maikling instruksyon sa iyong wika.',
+                emailBtn: 'Kunin ang link',
+                c1Title: 'Kilalanin & Itugma (core)',
+                c1Desc: 'Mag-upload ng larawan o i-scan ang barcode — ipinapakita ng Paturi ang pinagkakatiwalaang lokal na katumbas, may reviews at badge.',
+                c2Title: 'Pre-order & Fresh arrivals',
+                c2Desc: 'Mag-reserve ng limitadong stock mula sa kalapit na ethnic shop — makakatanggap ka ng notification kapag dumating.',
+                c3Title: 'Exclusive local offers',
+                c3Desc: 'App-only deals at community bundles mula sa lokal na tindahan.'
+            }
+        };
 
-  // language UI
-  const langBtn = document.getElementById('langBtn'), langList = document.getElementById('langList'), langLabel = document.getElementById('langLabel');
-  langBtn.addEventListener('click',()=>{ langList.style.display = langList.style.display==='block' ? 'none' : 'block'; langList.setAttribute('aria-hidden', langList.style.display!=='block'); });
-  document.addEventListener('click',(e)=>{ if(!langBtn.contains(e.target) && !langList.contains(e.target)) langList.style.display='none'; });
-  document.querySelectorAll('.lang-item').forEach(it=>{ it.addEventListener('click',()=>{ const l = it.getAttribute('data-lang'); langLabel.textContent = it.textContent.split(' ')[0]; localStorage.setItem('paturi_lang', l); applyLang(l); langList.style.display='none'; }); });
+        // language UI
+        const langBtn = document.getElementById('langBtn');
+        const langList = document.getElementById('langList');
+        const langLabel = document.getElementById('langLabel');
+        
+        langBtn.addEventListener('click', () => {
+            langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
+            langList.setAttribute('aria-hidden', langList.style.display !== 'block');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
+                langList.style.display = 'none';
+            }
+        });
+        
+        document.querySelectorAll('.lang-item').forEach(it => {
+            it.addEventListener('click', () => {
+                const l = it.getAttribute('data-lang');
+                langLabel.textContent = it.textContent.split(' ')[0];
+                localStorage.setItem('paturi_lang', l);
+                applyLang(l);
+                langList.style.display = 'none';
+            });
+        });
 
-  function applyLang(l){ const t = TRANSLATIONS[l] || TRANSLATIONS['en'];
-    document.getElementById('heroTitle').textContent = t.heroTitle; document.getElementById('heroSubtitle').textContent = t.heroSubtitle; document.getElementById('heroLead').textContent = t.heroLead; document.getElementById('startBot').textContent = t.startBot; document.getElementById('howItWorks').textContent = t.howItWorks; document.getElementById('pilotTitle').textContent = t.pilotTitle; document.getElementById('pilotSub').textContent = t.pilotSub; document.getElementById('emailBtn').textContent = t.emailBtn;
-    document.getElementById('c1-title').textContent = t.c1Title; document.getElementById('c1-desc').textContent = t.c1Desc; document.getElementById('c2-title').textContent = t.c2Title; document.getElementById('c2-desc').textContent = t.c2Desc; document.getElementById('c3-title').textContent = t.c3Title; document.getElementById('c3-desc').textContent = t.c3Desc;
-    // apply Bengali font class
-    if(l==='bn') document.documentElement.classList.add('bn'); else document.documentElement.classList.remove('bn');
-  }
+        function applyLang(l) {
+            const t = TRANSLATIONS[l] || TRANSLATIONS['en'];
+            document.getElementById('heroTitle').textContent = t.heroTitle;
+            document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
+            document.getElementById('heroLead').textContent = t.heroLead;
+            document.getElementById('startBot').textContent = t.startBot;
+            document.getElementById('howItWorks').textContent = t.howItWorks;
+            document.getElementById('pilotTitle').textContent = t.pilotTitle;
+            document.getElementById('pilotSub').textContent = t.pilotSub;
+            document.getElementById('emailBtn').textContent = t.emailBtn;
+            document.getElementById('c1-title').textContent = t.c1Title;
+            document.getElementById('c1-desc').textContent = t.c1Desc;
+            document.getElementById('c2-title').textContent = t.c2Title;
+            document.getElementById('c2-desc').textContent = t.c2Desc;
+            document.getElementById('c3-title').textContent = t.c3Title;
+            document.getElementById('c3-desc').textContent = t.c3Desc;
+            
+            // apply Bengali font class
+            if (l === 'bn') {
+                document.documentElement.classList.add('bn');
+            } else {
+                document.documentElement.classList.remove('bn');
+            }
+        }
 
-  const initial = localStorage.getItem('paturi_lang') || 'en';
-  const node = document.querySelector('.lang-item[data-lang="'+initial+'"]');
-  langLabel.textContent = (node?node.textContent:'EN').split(' ')[0];
-  applyLang(initial);
+        const initial = localStorage.getItem('paturi_lang') || 'en';
+        const node = document.querySelector('.lang-item[data-lang="' + initial + '"]');
+        langLabel.textContent = (node ? node.textContent : 'EN').split(' ')[0];
+        applyLang(initial);
 
-  document.getElementById('startBot').addEventListener('click',()=> window.open(TG_BOT_LINK,'_blank'));
-  document.getElementById('tgOpen').addEventListener('click',()=> window.open(TG_BOT_LINK,'_blank'));
+        document.getElementById('startBot').addEventListener('click', () => window.open(TG_BOT_LINK, '_blank'));
+        document.getElementById('tgOpen').addEventListener('click', () => window.open(TG_BOT_LINK, '_blank'));
 
-  document.getElementById('emailBtn').addEventListener('click',()=>{
-    const email = document.getElementById('email').value;
-    if(!/^\S+@\S+\.\S+$/.test(email)){ alert('Please enter a valid email'); return; }
-    alert('Thanks — check your inbox for the pilot link.'); document.getElementById('email').value='';
-  });
+        document.getElementById('emailBtn').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                alert('Please enter a valid email');
+                return;
+            }
+            alert('Thanks — check your inbox for the pilot link.');
+            document.getElementById('email').value = '';
+        });
 
-  document.getElementById('howItWorks').addEventListener('click',()=>{
-    // short in-place explainer modal simplified
-    alert('How it works:\n1) Send name/photo/barcode in your language → 2) Paturi finds local matches + badges + prices → 3) Choose, reserve or go to store.');
-  });
-</script>
+        document.getElementById('howItWorks').addEventListener('click', () => {
+            // short in-place explainer modal simplified
+            alert('How it works:\n1) Send name/photo/barcode in your language → 2) Paturi finds local matches + badges + prices → 3) Choose, reserve or go to store.');
+        });
+    </script>
 </body>
 </html>
