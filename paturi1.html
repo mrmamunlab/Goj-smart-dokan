@@ -698,7 +698,28 @@
         box-shadow: none;
         background: transparent;
     }
+
+/* Mobile language selector fix */
+@media (max-width: 767px) {
+    .lang-list {
+        position: fixed !important;
+        top: 80px !important;
+        left: 20px !important;
+        right: 20px !important;
+        width: auto !important;
+        z-index: 1002 !important;
+    }
+    
+    .controls {
+        position: static !important;
+        transform: none !important;
+        opacity: 1 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
 }
+
     </style>
 </head>
 <body>
@@ -1134,7 +1155,6 @@ document.addEventListener('DOMContentLoaded', function() {
             langList.style.display = 'none';
         }
     });
-});
 
     </script>
 </body>
