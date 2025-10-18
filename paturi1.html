@@ -861,7 +861,7 @@
         </section>
 
         <section class="signup" id="signup">
-            <h3 id="pilotTitle">Join the Bologna pilot</h3>
+            <h3 id="pilotTitle">Join the Bologna pilot launch</h3>
             <p id="pilotSub">Enter your email and we'll send the Telegram link and short instructions in your language. Limited spots.</p>
             <div class="signup-input">
                 <input id="email" placeholder="Your email">
@@ -898,303 +898,252 @@
     </footer>
 
     <script>
-        const TG_BOT_LINK = 'https://t.me/aslivo';
-        const TG_CHANNEL_LINK = 'https://t.me/aslivocommunity';
+    const TG_BOT_LINK = 'https://t.me/aslivo';
+    const TG_CHANNEL_LINK = 'https://t.me/aslivocommunity';
 
-        const TRANSLATIONS = {
-            en: {
-                heroTitle: "Don't lose the product you want because of language.",
-                heroSubtitle: "Type in your language, scan a barcode or upload a photo — Aslivo finds the closest local match, shows price, badges (Halal/Vegan/Bio) and community ratings.",
-                heroLead: "No guesswork: get clear product matches, trusted badges and local offers — in your language.",
-                startBot: 'Start on Telegram',
-                howItWorks: 'How it works',
-                pilotTitle: 'Join the Bologna pilot',
-                pilotSub: "Enter your email and we'll send the Telegram link and short instructions in your language. Limited spots.",
-                emailBtn: 'Get link',
-                c1Title: 'Recognize & Match (core)',
-                c1Desc: 'Upload a photo, scan barcode or write in your language. Aslivo identifies the product and finds trusted local equivalents, with badges and community reviews.',
-                c2Title: 'Pre-order & Fresh arrivals',
-                c2Desc: 'Reserve fresh arrivals or limited stock from nearby ethnic shops — get notified when they arrive.',
-                c3Title: 'Exclusive local offers',
-                c3Desc: 'App-only deals and community bundles from local stores that match your culture and taste.'
-            },
+    const TRANSLATIONS = {
+        en: {
+            heroTitle: "Don't lose the product you want because of language.",
+            heroSubtitle: "Type in your language, scan a barcode or upload a photo — Aslivo finds the closest local match, shows price, badges (Halal/Vegan/Bio) and community ratings.",
+            heroLead: "No guesswork: get clear product matches, trusted badges and local offers — in your language.",
+            startBot: 'Start on Telegram',
+            howItWorks: 'How it works',
+            pilotTitle: 'Join the Bologna pilot',
+            pilotSub: "Enter your email and we'll send the Telegram link and short instructions in your language. Limited spots.",
+            emailBtn: 'Get link',
+            c1Title: 'Recognize & Match (core)',
+            c1Desc: 'Upload a photo, scan barcode or write in your language. Aslivo identifies the product and finds trusted local equivalents, with badges and community reviews.',
+            c2Title: 'Pre-order & Fresh arrivals',
+            c2Desc: 'Reserve fresh arrivals or limited stock from nearby ethnic shops — get notified when they arrive.',
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'App-only deals and community bundles from local stores that match your culture and taste.'
+        },
 
-            bn: {
-                heroTitle: 'আর নয় ভাষা জটিলতা, ইতালিতে দেশীয় বা যেকোনো পন্যের বিকল্প খোজা এখন সহজ',
-                heroSubtitle: 'আপনি বাংলায় পন্যটির নাম বা ধরন লিখুন অথবা পন্য হাতে থাকলে সেটির বারকোড স্ক্যান করুন বা ছবি আপলোড করুন ——স্থানীয় কোন বিকল্পটি আপনার জন্য ঠিক, দাম কত এবং কমিউনিটি কী বলছে সব রকমের তথ্য মুহুর্তে দেখতে পারবেন।',
-                heroLead: 'আশঙ্কা-জটিলতা ছাড়া কেনাকাটা — স্পষ্ট বিকল্প match, halal/Vegan/Bio badges-সহ স্থানীয় মূল্য তুলনা এবং অফার নিজ ভাষায় দেখুন।',
-                startBot: 'টেলিগ্রামে শুরু করুন',
-                howItWorks: 'কিভাবে কাজ করে',
-                pilotTitle: 'বোলোনিয়াতে পাইলট launch-এ যোগ দিন',
-                pilotSub: 'ইমেইল দিন—আমরা টেলিগ্রাম লিংক ও সহজ নির্দেশনা পাঠাব।',
-                emailBtn: 'লিংক পেতে ক্লিক করুন',
-                c1Title: 'পণ্য শনাক্ত ও match (key feature)',
-                c1Desc: 'ছবি আপলোড করুন বা বারকোড স্ক্যান করুন — Aslivo স্থানীয় বিশ্বস্ত বিকল্প দেখাবে, রেটিং ও ব্যাজসহ।',
-                c2Title: 'fresh আগমন updates ও চাইলে প্রি-অর্ডার (দোকানে গিয়েই pay করুন),
-                c2Desc: 'নিকটস্থ দেশীয় বা লোকাল দোকান থেকে শাক-সবজি মাছ-মাংশ ফল-মুল কিংবা দেশীয় মিষ্টান্ন বা দেশীয় বিশেষ পন্য কোথায় কখন আসবে বা আসছে জানুন, আর যদি pre-order করেন তাহলে শুধু Aslivo তেই পাচ্ছেন বিশেষ আগমনী মূল্যছাড়। (Aslivo-তে অনলাইনেই নয় বরং কিনার সময় দেখেশুনে দোকানেই সরাসরি গিয়ে pay করা যায় একই মূল্যছাড়ে),
-                c3Title: 'স্থানীয় এক্সক্লুসিভ অফার',
-                c3Desc: 'শুধু app-এই পাবেন লোকাল দেশীয় ও মার্কেটগুলো থেকে বিশেষ মূল্যছাড়'
-            },
+        bn: {
+            heroTitle: 'আর নয় ভাষা জটিলতা, ইতালিতে দেশীয় বা যেকোনো পন্যের বিকল্প খোজা এখন সহজ',
+            heroSubtitle: 'আপনি বাংলায় পন্যটির নাম বা ধরন লিখুন অথবা পন্য হাতে থাকলে সেটির বারকোড স্ক্যান করুন বা ছবি আপলোড করুন ——স্থানীয় কোন বিকল্পটি আপনার জন্য ঠিক, দাম কত এবং কমিউনিটি কী বলছে সব রকমের তথ্য মুহুর্তে দেখতে পারবেন।',
+            heroLead: 'আশঙ্কা-জটিলতা ছাড়া কেনাকাটা — স্পষ্ট বিকল্প match, halal/Vegan/Bio badges-সহ স্থানীয় মূল্য তুলনা এবং অফার নিজ ভাষায় দেখুন।',
+            startBot: 'টেলিগ্রামে শুরু করুন',
+            howItWorks: 'কিভাবে কাজ করে',
+            pilotTitle: 'বোলোনিয়াতে পাইলট launch-এ যোগ দিন',
+            pilotSub: 'ইমেইল দিন—আমরা টেলিগ্রাম লিংক ও সহজ নির্দেশনা পাঠাব।',
+            emailBtn: 'লিংক পেতে ক্লিক করুন',
+            c1Title: 'পণ্য শনাক্ত ও match (key feature)',
+            c1Desc: 'ছবি আপলোড করুন বা বারকোড স্ক্যান করুন — Aslivo স্থানীয় বিশ্বস্ত বিকল্প দেখাবে, রেটিং ও ব্যাজসহ।',
+            c2Title: 'fresh আগমন updates ও চাইলে প্রি-অর্ডার (দোকানে গিয়েই pay করুন)',
+            c2Desc: 'নিকটস্থ দেশীয় বা লোকাল দোকান থেকে শাক-সবজি মাছ-মাংশ ফল-মুল কিংবা দেশীয় মিষ্টান্ন বা দেশীয় বিশেষ পন্য কোথায় কখন আসবে বা আসছে জানুন, আর যদি pre-order করেন তাহলে শুধু Aslivo তেই পাচ্ছেন বিশেষ আগমনী মূল্যছাড়। (Aslivo-তে অনলাইনেই নয় বরং কিনার সময় দেখেশুনে দোকানেই সরাসরি গিয়ে pay করা যায় একই মূল্যছাড়ে)',
+            c3Title: 'স্থানীয় এক্সক্লুসিভ অফার',
+            c3Desc: 'শুধু app-এই পাবেন লোকাল দেশীয় ও মার্কেটগুলো থেকে বিশেষ মূল্যছাড়'
+        },
 
-            ur: {
-                heroTitle: 'زبان کی وجہ سے جس چیز کی آپ کو یاد ہے وہ کھوئیے مت۔',
-                heroSubtitle: 'اپنی زبان میں ٹائپ کریں، بارکوڈ اسکین کریں یا تصویر اپ لوڈ کریں — Aslivo آپ کو مقامی مماثل، قیمت اور کمیونٹی کی رائے بتائے گا۔',
-                heroLead: 'غلط فہمی نہیں — واضح میچ، حلال/ویگن بیجز اور مقامی آفرز آپکی زبان میں۔',
-                startBot: 'ٹیلیگرام شروع کریں',
-                howItWorks: 'یہ کیسے کام کرتا ہے',
-                pilotTitle: 'بولونیا پائلٹ میں شامل ہوں',
-                pilotSub: 'اپنا ای میل دیں — ہم ٹیلگرام لنک اور آسان ہدایات آپکی زبان میں بھیجیں گے۔',
-                emailBtn: 'لنک حاصل کریں',
-                c1Title: 'پہچان اور ملاپ (مرکزی)',
-                c1Desc: 'تصویر اپ لوڈ کریں یا بارکوڈ اسکین کریں — Aslivo قابلِ اعتماد مقامی متبادل دکھائے گا، رائے اور بیجز کے ساتھ۔',
-                c2Title: 'پری آرڈر اور تازہ رسد',
-                c2Desc: 'قریبی دکانوں سے محدود اسٹاک محفوظ کریں — جب تازہ آئٹمز آئیں نوٹیفائی ہوں۔',
-                c3Title: 'مقامی خصوصی آفرز',
-                c3Desc: 'ایپ پر مخصوص ڈیلز اور کمیونٹی بنڈلز۔'
-            },
+        ur: {
+            heroTitle: 'زبان کی وجہ سے جس چیز کی آپ کو یاد ہے وہ کھوئیے مت۔',
+            heroSubtitle: 'اپنی زبان میں ٹائپ کریں، بارکوڈ اسکین کریں یا تصویر اپ لوڈ کریں — Aslivo آپ کو مقامی مماثل، قیمت اور کمیونٹی کی رائے بتائے گا۔',
+            heroLead: 'غلط فہمی نہیں — واضح میچ، حلال/ویگن بیجز اور مقامی آفرز آپکی زبان میں۔',
+            startBot: 'ٹیلیگرام شروع کریں',
+            howItWorks: 'یہ کیسے کام کرتا ہے',
+            pilotTitle: 'بولونیا پائلٹ میں شامل ہوں',
+            pilotSub: 'اپنا ای میل دیں — ہم ٹیلگرام لنک اور آسان ہدایات آپکی زبان میں بھیجیں گے۔',
+            emailBtn: 'لنک حاصل کریں',
+            c1Title: 'پہچان اور ملاپ (مرکزی)',
+            c1Desc: 'تصویر اپ لوڈ کریں یا بارکوڈ اسکین کریں — Aslivo قابلِ اعتماد مقامی متبادل دکھائے گا، رائے اور بیجز کے ساتھ۔',
+            c2Title: 'پری آرڈر اور تازہ رسد',
+            c2Desc: 'قریبی دکانوں سے محدود اسٹاک محفوظ کریں — جب تازہ آئٹمز آئیں نوٹیفائی ہوں۔',
+            c3Title: 'مقامی خصوصی آفرز',
+            c3Desc: 'ایپ پر مخصوص ڈیلز اور کمیونٹی بنڈلز۔'
+        },
 
-            ps: {
-                heroTitle: 'د ژبې له امله هغه توکی مه له لاسه ورکوئ چې په ذهن کې مو دی.',
-                heroSubtitle: 'په خپله ژبه ولیکئ، بارکوډ سکین کړئ یا عکس اپلوډ کړئ — Aslivo به وښيي کوم محلي بدیل ستاسو لپاره مناسب دی، قیمت او د ټولنې نظرونه.',
-                heroLead: 'بې پلوه او واضح میچونه، حلال/ویګن بیجونه او ځایي وړاندیزونه ستاسو په ژبه کې.',
-                startBot: 'په ټیلیګرام کې پیل کړئ',
-                howItWorks: 'څنګه کار کوي',
-                pilotTitle: 'د بولونیا پائلټ کې ګډون وکړئ',
-                pilotSub: 'خپل ایمیل ولیکئ — موږ به په خپل ژبه لنک او ساده لارښوونې واستوو.',
-                emailBtn: 'لینک ترلاسه کړئ',
-                c1Title: 'پیژندنه او میچ (اساسي)',
-                c1Desc: 'انځور اپلوډ کړئ یا بارکوډ سکین کړئ — Aslivo باوري سیمه ییز بدیلونه، درجه بندي او بیجونه ښیي.',
-                c2Title: 'پری-آرډر او تازه راورسېدل',
-                c2Desc: 'د محلي هټۍ څخه محدود توکي وساتئ — تازه راغلل خبرتیا ترلاسه کړئ.',
-                c3Title: 'ځایي ځانګړي وړاندیزونه',
-                c3Desc: 'د اپ-یوازې معاملې او ټولنې بنډلونه.'
-            },
+        ps: {
+            heroTitle: 'د ژبې له امله هغه توکی مه له لاسه ورکوئ چې په ذهن کې مو دی.',
+            heroSubtitle: 'په خپله ژبه ولیکئ، بارکوډ سکین کړئ یا عکس اپلوډ کړئ — Aslivo به وښيي کوم محلي بدیل ستاسو لپاره مناسب دی، قیمت او د ټولنې نظرونه.',
+            heroLead: 'بې پلوه او واضح میچونه، حلال/ویګن بیجونه او ځایي وړاندیزونه ستاسو په ژبه کې.',
+            startBot: 'په ټیلیګرام کې پیل کړئ',
+            howItWorks: 'څنګه کار کوي',
+            pilotTitle: 'د بولونیا پائلټ کې ګډون وکړئ',
+            pilotSub: 'خپل ایمیل ولیکئ — موږ به په خپل ژبه لنک او ساده لارښوونې واستوو.',
+            emailBtn: 'لینک ترلاسه کړئ',
+            c1Title: 'پیژندنه او میچ (اساسي)',
+            c1Desc: 'انځور اپلوډ کړئ یا بارکوډ سکین کړئ — Aslivo باوري سیمه ییز بدیلونه، درجه بندي او بیجونه ښیي.',
+            c2Title: 'پری-آرډر او تازه راورسېدل',
+            c2Desc: 'د محلي هټۍ څخه محدود توکي وساتئ — تازه راغلل خبرتیا ترلاسه کړئ.',
+            c3Title: 'ځایي ځانګړي وړاندیزونه',
+            c3Desc: 'د اپ-یوازې معاملې او ټولنې بنډلونه.'
+        },
 
-            hi: {
-                heroTitle: 'भाषा की वजह से जो प्रोडक्ट आप सोच रहे हैं उसे खोइए मत।',
-                heroSubtitle: 'अपनी भाषा में लिखें, बारकोड स्कैन करें या फोटो अपलोड करें — Aslivo निकटतम स्थानीय विकल्प, कीमत और कम्युनिटी रिव्यू दिखाता है।',
-                heroLead: 'साफ़ मिल, भरोसेमंद बैज और स्थानीय ऑफर — आपकी भाषा में।',
-                startBot: 'Telegram शुरू करें',
-                howItWorks: 'कैसे काम करता है',
-                pilotTitle: 'बोलोग्ना पायलट में शामिल हों',
-                pilotSub: 'अपना ईमेल दें — हम Telegram लिंक और आसान निर्देश आपकी भाषा में भेजेंगे।',
-                emailBtn: 'लिंक पाएं',
-                c1Title: 'पहचानें और मिलाएँ (कोर)',
-                c1Desc: 'फोटो अपलोड करें या बारकोड स्कैन करें — Aslivo भरोसेमंद स्थानीय विकल्प दिखाएगा, रेटिंग्स और बैज के साथ।',
-                c2Title: 'प्री-ऑर्डर व ताज़ा आगमन',
-                c2Desc: 'नज़दीकी दुकानों से सीमित स्टॉक रिज़र्व करें — जैसे ही ताज़ा आए सूचना मिलें।',
-                c3Title: 'स्थानीय एक्सक्लूसिव ऑफ़र',
-                c3Desc: 'ऐप-विशेष डील और कम्युनिटी बंडल।'
-            },
+        hi: {
+            heroTitle: 'भाषा की वजह से जो प्रोडक्ट आप सोच रहे हैं उसे खोइए मत।',
+            heroSubtitle: 'अपनी भाषा में लिखें, बारकोड स्कैन करें या फोटो अपलोड करें — Aslivo निकटतम स्थानीय विकल्प, कीमत और कम्युनिटी रिव्यू दिखाता है।',
+            heroLead: 'साफ़ मिल, भरोसेमंद बैज और स्थानीय ऑफर — आपकी भाषा में।',
+            startBot: 'Telegram शुरू करें',
+            howItWorks: 'कैसे काम करता है',
+            pilotTitle: 'बोलोग्ना पायलट में शामिल हों',
+            pilotSub: 'अपना ईमेल दें — हम Telegram लिंक और आसान निर्देश आपकी भाषा में भेजेंगे।',
+            emailBtn: 'लिंक पाएं',
+            c1Title: 'पहचानें और मिलाएँ (कोर)',
+            c1Desc: 'फोटो अपलोड करें या बारकोड स्कैन करें — Aslivo भरोसेमंद स्थानीय विकल्प दिखाएगा, रेटिंग्स और बैज के साथ।',
+            c2Title: 'प्री-ऑर्डर व ताज़ा आगमन',
+            c2Desc: 'नज़दीकी दुकानों से सीमित स्टॉक रिज़र्व करें — जैसे ही ताज़ा आए सूचना मिलें।',
+            c3Title: 'स्थानीय एक्सक्लूसिव ऑफ़र',
+            c3Desc: 'ऐप-विशेष डील और कम्युनिटी बंडल।'
+        },
 
-            ar: {
-                heroTitle: 'لا تفقد المنتج الذي تبحث عنه بسبب اللغة.',
-                heroSubtitle: 'اكتب بلغتك، امسح الباركود أو ارفع صورة — Aslivo يعرض البدائل المحلية مع الأسعار وتقييمات المجتمع.',
-                heroLead: 'مطابقات واضحة، شارات موثوقة وعروض محلية — بلغتك.',
-                startBot: 'ابدأ على تيليجرام',
-                howItWorks: 'كيف يعمل',
-                pilotTitle: 'انضم لتجربة بولونيا',
-                pilotSub: 'أدخل بريدك الإلكتروني — سنرسل رابط تيليجرام وتعليمات قصيرة بلغتك.',
-                emailBtn: 'الحصول على الرابط',
-                c1Title: 'التعرّف والمطابقة (أساسي)',
-                c1Desc: 'حمّل صورة أو امسح الباركود — Aslivo يعرض بدائل محلية موثوقة مع تقييمات وشارات.',
-                c2Title: 'الطلب المسبق والوافدون الطازجون',
-                c2Desc: 'احجز مخزونًا محدودًا من المتاجر المحلية — وستصلك إشعارات عند وصول المنتجات الطازجة.',
-                c3Title: 'عروض محلية حصرية',
-                c3Desc: 'عروض خاصة على التطبيق وحزم مخصصة للمجتمع.'
-            },
+        ar: {
+            heroTitle: 'لا تفقد المنتج الذي تبحث عنه بسبب اللغة.',
+            heroSubtitle: 'اكتب بلغتك، امسح الباركود أو ارفع صورة — Aslivo يعرض البدائل المحلية مع الأسعار وتقييمات المجتمع.',
+            heroLead: 'مطابقات واضحة، شارات موثوقة وعروض محلية — بلغتك.',
+            startBot: 'ابدأ على تيليجرام',
+            howItWorks: 'كيف يعمل',
+            pilotTitle: 'انضم لتجربة بولونيا',
+            pilotSub: 'أدخل بريدك الإلكتروني — سنرسل رابط تيليجرام وتعليمات قصيرة بلغتك.',
+            emailBtn: 'الحصول على الرابط',
+            c1Title: 'التعرّف والمطابقة (أساسي)',
+            c1Desc: 'حمّل صورة أو امسح الباركود — Aslivo يعرض بدائل محلية موثوقة مع تقييمات وشارات.',
+            c2Title: 'الطلب المسبق والوافدون الطازجون',
+            c2Desc: 'احجز مخزونًا محدودًا من المتاجر المحلية — وستصلك إشعارات عند وصول المنتجات الطازجة.',
+            c3Title: 'عروض محلية حصرية',
+            c3Desc: 'عروض خاصة على التطبيق وحزم مخصصة للمجتمع.'
+        },
 
-            id: {
-                heroTitle: 'Jangan kehilangan produk yang Anda cari karena bahasa.',
-                heroSubtitle: 'Ketik dalam bahasa Anda, pindai barcode atau unggah foto — Aslivo menemukan padanan lokal, harga, dan ulasan komunitas.',
-                heroLead: 'Hasil yang jelas: kecocokan produk, badge tepercaya, dan penawaran lokal — dalam bahasa Anda.',
-                startBot: 'Mulai di Telegram',
-                howItWorks: 'Cara kerja',
-                pilotTitle: 'Ikut pilot Bologna',
-                pilotSub: 'Masukkan email Anda — kami akan mengirim tautan Telegram dan instruksi singkat dalam bahasa Anda.',
-                emailBtn: 'Dapatkan tautan',
-                c1Title: 'Kenali & Cocokkan (inti)',
-                c1Desc: 'Unggah foto atau pindai barcode — Aslivo menampilkan padanan lokal tepercaya dengan ulasan dan badge.',
-                c2Title: 'Pre-order & Kedatangan Segar',
-                c2Desc: 'Pesan stok terbatas dari toko etnis terdekat — dapatkan notifikasi saat barang tiba.',
-                c3Title: 'Penawaran Lokal Eksklusif',
-                c3Desc: 'Penawaran khusus aplikasi dan bundel komunitas.'
-            },
+        id: {
+            heroTitle: 'Jangan kehilangan produk yang Anda cari karena bahasa.',
+            heroSubtitle: 'Ketik dalam bahasa Anda, pindai barcode atau unggah foto — Aslivo menemukan padanan lokal, harga, dan ulasan komunitas.',
+            heroLead: 'Hasil yang jelas: kecocokan produk, badge tepercaya, dan penawaran lokal — dalam bahasa Anda.',
+            startBot: 'Mulai di Telegram',
+            howItWorks: 'Cara kerja',
+            pilotTitle: 'Ikut pilot Bologna',
+            pilotSub: 'Masukkan email Anda — kami akan mengirim tautan Telegram dan instruksi singkat dalam bahasa Anda.',
+            emailBtn: 'Dapatkan tautan',
+            c1Title: 'Kenali & Cocokkan (inti)',
+            c1Desc: 'Unggah foto atau pindai barcode — Aslivo menampilkan padanan lokal tepercaya dengan ulasan dan badge.',
+            c2Title: 'Pre-order & Kedatangan Segar',
+            c2Desc: 'Pesan stok terbatas dari toko etnis terdekat — dapatkan notifikasi saat barang tiba.',
+            c3Title: 'Penawaran Lokal Eksklusif',
+            c3Desc: 'Penawaran khusus aplikasi dan bundel komunitas.'
+        },
 
-            tl: {
-                heroTitle: 'Huwag mawala ang produkto na nasa isip mo dahil sa wika.',
-                heroSubtitle: 'Magsulat sa iyong wika, i-scan ang barcode o mag-upload ng larawan — Aslivo hahanapin ang pinakamalapit na lokal na katumbas, presyo at review.',
-                heroLead: 'Malinaw na tugma, trusted badges at lokal na alok — sa iyong wika.',
-                startBot: 'Magsimula sa Telegram',
-                howItWorks: 'Paano gumagana',
-                pilotTitle: 'Sumali sa Bologna pilot',
-                pilotSub: 'Ilagay ang iyong email — ipapadala namin ang Telegram link at maikling instruksyon sa iyong wika.',
-                emailBtn: 'Kunin ang link',
-                c1Title: 'Kilalanin & Itugma (core)',
-                c1Desc: 'Mag-upload ng larawan o i-scan ang barcode — ipinapakita ng Aslivo ang pinagkakatiwalaang lokal na katumbas, may reviews at badge.',
-                c2Title: 'Pre-order & Fresh arrivals',
-                c2Desc: 'Mag-reserve ng limitadong stock mula sa kalapit na ethnic shop — makakatanggap ka ng notification kapag dumating.',
-                c3Title: 'Exclusive local offers',
-                c3Desc: 'App-only deals at community bundles mula sa lokal na tindahan.'
-            }
-        };
-
-        // Language functionality
-        const langBtn = document.getElementById('langBtn');
-        const langList = document.getElementById('langList');
-        const langLabel = document.getElementById('langLabel');
-        
-        langBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
-        });
-        
-        document.addEventListener('click', (e) => {
-            if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
-                langList.style.display = 'none';
-            }
-        });
-        
-        document.querySelectorAll('.lang-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const lang = item.getAttribute('data-lang');
-                langLabel.textContent = item.textContent.split(' ')[0];
-                localStorage.setItem('aslivo_lang', lang);
-                applyLang(lang);
-                langList.style.display = 'none';
-            });
-        });
-
-        function applyLang(lang) {
-            const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
-            
-            // Update all text elements
-            document.getElementById('heroTitle').textContent = t.heroTitle;
-            document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
-            document.getElementById('heroLead').textContent = t.heroLead;
-            document.getElementById('startBot').innerHTML = `<i class="fab fa-telegram-plane"></i> ${t.startBot}`;
-            document.getElementById('howItWorks').textContent = t.howItWorks;
-            document.getElementById('pilotTitle').textContent = t.pilotTitle;
-            document.getElementById('pilotSub').textContent = t.pilotSub;
-            document.getElementById('emailBtn').textContent = t.emailBtn;
-            document.getElementById('c1-title').textContent = t.c1Title;
-            document.getElementById('c1-desc').textContent = t.c1Desc;
-            document.getElementById('c2-title').textContent = t.c2Title;
-            document.getElementById('c2-desc').textContent = t.c2Desc;
-            document.getElementById('c3-title').textContent = t.c3Title;
-            document.getElementById('c3-desc').textContent = t.c3Desc;
-            
-            // Apply Bengali font if selected
-            if (lang === 'bn') {
-                document.documentElement.classList.add('bn');
-            } else {
-                document.documentElement.classList.remove('bn');
-            }
+        tl: {
+            heroTitle: 'Huwag mawala ang produkto na nasa isip mo dahil sa wika.',
+            heroSubtitle: 'Magsulat sa iyong wika, i-scan ang barcode o mag-upload ng larawan — Aslivo hahanapin ang pinakamalapit na lokal na katumbas, presyo at review.',
+            heroLead: 'Malinaw na tugma, trusted badges at lokal na alok — sa iyong wika.',
+            startBot: 'Magsimula sa Telegram',
+            howItWorks: 'Paano gumagana',
+            pilotTitle: 'Sumali sa Bologna pilot',
+            pilotSub: 'Ilagay ang iyong email — ipapadala namin ang Telegram link at maikling instruksyon sa iyong wika.',
+            emailBtn: 'Kunin ang link',
+            c1Title: 'Kilalanin & Itugma (core)',
+            c1Desc: 'Mag-upload ng larawan o i-scan ang barcode — ipinapakita ng Aslivo ang pinagkakatiwalaang lokal na katumbas, may reviews at badge.',
+            c2Title: 'Pre-order & Fresh arrivals',
+            c2Desc: 'Mag-reserve ng limitadong stock mula sa kalapit na ethnic shop — makakatanggap ka ng notification kapag dumating.',
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'App-only deals at community bundles mula sa lokal na tindahan.'
         }
+    };
 
-        // Initialize language
-        const savedLang = localStorage.getItem('aslivo_lang') || 'en';
-        const savedLangItem = document.querySelector(`.lang-item[data-lang="${savedLang}"]`);
-        if (savedLangItem) {
-            langLabel.textContent = savedLangItem.textContent.split(' ')[0];
-            applyLang(savedLang);
-        }
-
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const controls = document.getElementById('controls');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            controls.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileMenuBtn.contains(e.target) && !controls.contains(e.target)) {
-                controls.classList.remove('active');
-            }
-        });
-
-        // Telegram functionality
-        document.getElementById('startBot').addEventListener('click', () => window.open(TG_BOT_LINK, '_blank'));
-        document.getElementById('tgOpen').addEventListener('click', () => window.open(TG_BOT_LINK, '_blank'));
-
-        // Email signup
-        document.getElementById('emailBtn').addEventListener('click', () => {
-            const email = document.getElementById('email').value;
-            if (!/^\S+@\S+\.\S+$/.test(email)) {
-                alert('Please enter a valid email');
-                return;
-            }
-            alert('Thanks — check your inbox for the pilot link.');
-            document.getElementById('email').value = '';
-        });
-
-        // How it works
-        document.getElementById('howItWorks').addEventListener('click', () => {
-            alert('How it works:\n1) Send name/photo/barcode in your language → 2) Aslivo finds local matches + badges + prices → 3) Choose, reserve or go to store.');
-        });
-
-// Mobile language functionality fix
-document.addEventListener('DOMContentLoaded', function() {
+    // Language functionality
     const langBtn = document.getElementById('langBtn');
     const langList = document.getElementById('langList');
+    const langLabel = document.getElementById('langLabel');
     
-    // Toggle language list on mobile
+    // Language button click
     langBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        if (window.innerWidth <= 767) {
-            langList.style.display = langList.style.display === 'block' ? 'none' : 'block';
+        if (langList.style.display === 'block') {
+            langList.style.display = 'none';
+        } else {
+            langList.style.display = 'block';
         }
     });
     
-    // Close language list when clicking outside on mobile
+    // Close language list when clicking outside
     document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 767 && 
-            !langBtn.contains(e.target) && 
-            !langList.contains(e.target)) {
+        if (!langBtn.contains(e.target) && !langList.contains(e.target)) {
             langList.style.display = 'none';
         }
     });
+    
+    // Language item selection
+    document.querySelectorAll('.lang-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            langLabel.textContent = this.textContent.split(' ')[0];
+            localStorage.setItem('aslivo_lang', lang);
+            applyLang(lang);
+            langList.style.display = 'none';
+        });
+    });
 
-// Fix mobile language selection
-document.querySelectorAll('.lang-item').forEach(item => {
-    item.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const lang = this.getAttribute('data-lang');
-        const langLabel = document.getElementById('langLabel');
+    function applyLang(lang) {
+        const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
         
-        // Update language label
-        langLabel.textContent = this.textContent.split(' ')[0];
+        document.getElementById('heroTitle').textContent = t.heroTitle;
+        document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
+        document.getElementById('heroLead').textContent = t.heroLead;
+        document.getElementById('startBot').innerHTML = `<i class="fab fa-telegram-plane"></i> ${t.startBot}`;
+        document.getElementById('howItWorks').textContent = t.howItWorks;
+        document.getElementById('pilotTitle').textContent = t.pilotTitle;
+        document.getElementById('pilotSub').textContent = t.pilotSub;
+        document.getElementById('emailBtn').textContent = t.emailBtn;
+        document.getElementById('c1-title').textContent = t.c1Title;
+        document.getElementById('c1-desc').textContent = t.c1Desc;
+        document.getElementById('c2-title').textContent = t.c2Title;
+        document.getElementById('c2-desc').textContent = t.c2Desc;
+        document.getElementById('c3-title').textContent = t.c3Title;
+        document.getElementById('c3-desc').textContent = t.c3Desc;
         
-        // Apply Bengali font if selected
         if (lang === 'bn') {
             document.documentElement.classList.add('bn');
         } else {
             document.documentElement.classList.remove('bn');
         }
-        
-        // Close dropdown on mobile
-        if (window.innerWidth <= 767) {
-            document.getElementById('langList').style.display = 'none';
-        }
-        
-        // Store language preference
-        localStorage.setItem('aslivo_lang', lang);
+    }
+
+    // Initialize language
+    const savedLang = localStorage.getItem('aslivo_lang') || 'en';
+    const savedLangItem = document.querySelector(`.lang-item[data-lang="${savedLang}"]`);
+    if (savedLangItem) {
+        langLabel.textContent = savedLangItem.textContent.split(' ')[0];
+        applyLang(savedLang);
+    }
+
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const controls = document.getElementById('controls');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        controls.classList.toggle('active');
     });
 
-document.getElementById('langBtn').addEventListener('click', function(e) {
-    e.stopPropagation();
-    const langList = document.getElementById('langList');
-    if (langList.style.display === 'block') {
-        langList.style.display = 'none';
-    } else {
-        langList.style.display = 'block';
-    }
-});
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!mobileMenuBtn.contains(e.target) && !controls.contains(e.target)) {
+            controls.classList.remove('active');
+        }
+    });
 
-});
+    // Telegram functionality
+    document.getElementById('startBot').addEventListener('click', function() {
+        window.open(TG_BOT_LINK, '_blank');
+    });
+    
+    document.getElementById('tgOpen').addEventListener('click', function() {
+        window.open(TG_BOT_LINK, '_blank');
+    });
 
-    </script>
+    // Email signup
+    document.getElementById('emailBtn').addEventListener('click', function() {
+        const email = document.getElementById('email').value;
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            alert('Please enter a valid email');
+            return;
+        }
+        alert('Thanks — check your inbox for the pilot link.');
+        document.getElementById('email').value = '';
+    });
+
+    // How it works
+    document.getElementById('howItWorks').addEventListener('click', function() {
+        alert('How it works:\n1) Send name/photo/barcode in your language → 2) Aslivo finds local matches + badges + prices → 3) Choose, reserve or go to store.');
+    });
+</script>
 </body>
 </html>
