@@ -761,6 +761,199 @@
     </header>
 
     <main class="container">
+
+<!-- Animated Quote Card -->
+<section class="quote-section">
+    <div class="quote-card">
+        <div class="quote-content">
+            <div class="quote-icon">❝</div>
+            <p id="quoteText" class="quote-text">"Search from thoughts — your way… anytime, anywhere, always."</p>
+            <div class="quote-icon">❞</div>
+        </div>
+        <div class="quote-decoration">
+            <div class="decoration-dot"></div>
+            <div class="decoration-line"></div>
+            <div class="decoration-dot"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Quote Card Styles */
+    .quote-section {
+        padding: 60px 0 20px;
+        display: flex;
+        justify-content: center;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .quote-card {
+        background: linear-gradient(135deg, var(--white), #f8faff);
+        border: 1px solid rgba(139, 92, 246, 0.1);
+        border-radius: 24px;
+        padding: 40px 30px;
+        text-align: center;
+        max-width: 800px;
+        width: 100%;
+        box-shadow: 
+            0 10px 25px -5px rgba(139, 92, 246, 0.1),
+            0 4px 6px -2px rgba(139, 92, 246, 0.05),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition);
+    }
+
+    .quote-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+        background-size: 200% 100%;
+        animation: gradientShift 3s ease-in-out infinite;
+    }
+
+    .quote-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 
+            0 20px 40px -10px rgba(139, 92, 246, 0.15),
+            0 8px 12px -4px rgba(139, 92, 246, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .quote-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .quote-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        opacity: 0.7;
+        animation: float 4s ease-in-out infinite;
+        transition: var(--transition);
+    }
+
+    .quote-card:hover .quote-icon {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    .quote-text {
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.4;
+        color: var(--text-dark);
+        margin: 0;
+        background: linear-gradient(135deg, var(--text-dark), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: textGlow 3s ease-in-out infinite alternate;
+    }
+
+    .quote-decoration {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .decoration-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary);
+        opacity: 0.6;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .decoration-dot:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+
+    .decoration-dot:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+
+    .decoration-line {
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        animation: lineGlow 2s ease-in-out infinite;
+    }
+
+    /* New Animations */
+    @keyframes gradientShift {
+        0%, 100% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    @keyframes textGlow {
+        from {
+            opacity: 0.9;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes lineGlow {
+        0%, 100% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .quote-section {
+            padding: 40px 0 15px;
+        }
+
+        .quote-card {
+            padding: 30px 20px;
+            margin: 0 15px;
+        }
+
+        .quote-content {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .quote-text {
+            font-size: 1.1rem;
+        }
+
+        .quote-card {
+            padding: 25px 15px;
+        }
+    }
+</style>
+
         <section class="hero" id="hero">
             <div class="hero-content">
                 <div class="title" id="heroTitle">Don't lose the product you want because of language.</div>
@@ -911,6 +1104,7 @@
 
     const TRANSLATIONS = {
         en: {
+            quoteText: '"Search from thoughts — your way… anytime, anywhere, always."',
             heroTitle: "Don't lose the product you want because of language or something else.",
             heroSubtitle: "Type what type of product in your mind even in your language, or scan a barcode or upload a photo (if you searching for local variants) — Aslivo work hard for you to finds the closest local match, and simply shows price, badges (Halal/Vegan/Bio) and community ratings.",
             heroLead: "No barriers—difficulties: get right product matches near you with trusted badges and price-off — in your language.",
@@ -932,6 +1126,7 @@
         },
 
         bn: {
+            quoteText: '"ভাবনা থেকে খোঁজ — নিজের মতো... এখনই, সবখানে, সবসময়"',
             heroTitle: 'আর নয় ভাষা জটিলতা, ইতালিতে দেশীয় বা যেকোনো পন্যের বিকল্প খোজা এখন সহজ',
             heroSubtitle: 'আপনি বাংলায় পন্যটির নাম বা ধরন লিখুন অথবা পন্য হাতে থাকলে সেটির বারকোড স্ক্যান করুন বা ছবি আপলোড করুন ——স্থানীয় কোন বিকল্পটি আপনার জন্য ঠিক, দাম কত এবং কমিউনিটি কী বলছে সব রকমের তথ্য মুহুর্তে দেখতে পারবেন।',
             heroLead: 'সংশয়-জটিলতা ছাড়া কেনাকাটা — সেরা মূল্যের বিকল্প match, halal/Vegan/Bio badges-সহ স্থানীয় মূল্য তুলনা এবং অফার নিজ ভাষায় দেখুন।',
@@ -949,10 +1144,11 @@
             c3Desc: 'fresh পন্য ছাড়াও এক app-এই একসাথে পাচ্ছেন ইতালিতে লোকাল দেশীয় এবং multi-cultural দোকান ও মার্কেটগুলো থেকে আপনার পছন্দের পন্যসমূহের উপর নিয়মিত বিশেষ মূল্যছাড়',
             imageTitle: 'আপনার ভাষায় পণ্য খুঁজুন',
             imageDesc: 'আপনি শুধু বলুন, Aslivo বাকিটা করে দেবে! এবং সেরা match দেখাবে।',
-            openTelegram: 'টেলিগ্রামে খুলুন'
+            openTelegram: 'Telegram bot'
         },
 
         ur: {
+            quoteText: '"سوچ سے تلاش کریں — اپنے انداز میں… کسی بھی وقت، کہیں بھی، ہمیشہ۔"',
             heroTitle: 'زبان کی وجہ سے جس چیز کی آپ کو یاد ہے وہ کھوئیے مت۔',
             heroSubtitle: 'اپنی زبان میں ٹائپ کریں، بارکوڈ اسکین کریں یا تصویر اپ لوڈ کریں — Aslivo آپ کو مقامی مماثل، قیمت اور کمیونٹی کی رائے بتائے گا۔',
             heroLead: 'غلط فہمی نہیں — واضح میچ، حلال/ویگن بیجز اور مقامی آفرز آپکی زبان میں۔',
@@ -974,6 +1170,7 @@
         },
 
         ps: {
+            quoteText: '"له خپلو فکرونو لټون وکړئ — په خپل ډول… هر وخت، هر ځای، تل."',
             heroTitle: 'د ژبې له امله هغه توکی مه له لاسه ورکوئ چې په ذهن کې مو دی.',
             heroSubtitle: 'په خپله ژبه ولیکئ، بارکوډ سکین کړئ یا عکس اپلوډ کړئ — Aslivo به وښيي کوم محلي بدیل ستاسو لپاره مناسب دی، قیمت او د ټولنې نظرونه.',
             heroLead: 'بې پلوه او واضح میچونه، حلال/ویګن بیجونه او ځایي وړاندیزونه ستاسو په ژبه کې.',
@@ -995,6 +1192,7 @@
         },
 
         hi: {
+            quoteText: '"सोच से खोजें — अपने तरीके से… कभी भी, कहीं भी, हमेशा।"',
             heroTitle: 'भाषा की वजह से जो प्रोडक्ट आप सोच रहे हैं उसे खोइए मत।',
             heroSubtitle: 'अपनी भाषा में लिखें, बारकोड स्कैन करें या फोटो अपलोड करें — Aslivo निकटतम स्थानीय विकल्प, कीमत और कम्युनिटी रिव्यू दिखाता है।',
             heroLead: 'साफ़ मिल, भरोसेमंद बैज और स्थानीय ऑफर — आपकी भाषा में।',
@@ -1016,6 +1214,7 @@
         },
 
         ar: {
+            quoteText: '"ابحث من أفكارك — بطريقتك… في أي وقت، في أي مكان، دائماً."',
             heroTitle: 'لا تفقد المنتج الذي تبحث عنه بسبب اللغة.',
             heroSubtitle: 'اكتب بلغتك، امسح الباركود أو ارفع صورة — Aslivo يعرض البدائل المحلية مع الأسعار وتقييمات المجتمع.',
             heroLead: 'مطابقات واضحة، شارات موثوقة وعروض محلية — بلغتك.',
@@ -1037,6 +1236,7 @@
         },
 
         id: {
+            quoteText: '"Cari dari pemikiranmu — caramu… kapan saja, di mana saja, selalu."',
             heroTitle: 'Jangan kehilangan produk yang Anda cari karena bahasa.',
             heroSubtitle: 'Ketik dalam bahasa Anda, pindai barcode atau unggah foto — Aslivo menemukan padanan lokal, harga, dan ulasan komunitas.',
             heroLead: 'Hasil yang jelas: kecocokan produk, badge tepercaya, dan penawaran lokal — dalam bahasa Anda.',
@@ -1058,6 +1258,7 @@
         },
 
         tl: {
+            quoteText: '"Maghanap mula sa mga naiisip mo — sa sariling paraan mo… anumang oras, kahit saan, palagi."',
             heroTitle: 'Huwag mawala ang produkto na nasa isip mo dahil sa wika.',
             heroSubtitle: 'Magsulat sa iyong wika, i-scan ang barcode o mag-upload ng larawan — Aslivo hahanapin ang pinakamalapit na lokal na katumbas, presyo at review.',
             heroLead: 'Malinaw na tugma, trusted badges at lokal na alok — sa iyong wika.',
@@ -1115,6 +1316,7 @@
     function applyLang(lang) {
         const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
         
+document.getElementById('quoteText').textContent = t.quoteText;
         document.getElementById('heroTitle').textContent = t.heroTitle;
         document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
         document.getElementById('heroLead').textContent = t.heroLead;
