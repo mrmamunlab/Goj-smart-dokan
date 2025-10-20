@@ -781,8 +781,8 @@
                         <div class="animated-icon">
                             <i class="fas fa-search"></i>
                         </div>
-                        <h3>Find Products in Your Language</h3>
-                        <p>Scan, type or upload - Aslivo does the rest!</p>
+                        <h3 id="imageTitle">Find Products in Your Language</h3>
+                        <p id="imageDesc">Scan, type or upload - Aslivo does the rest!</p>
                     </div>
                 </div>
             </div>
@@ -791,8 +791,8 @@
         <!-- three core features -->
         <section class="features" aria-label="Core features">
             <div class="section-title">
-                <h2>How Aslivo Works</h2>
-                <p>Three simple steps to find exactly what you're looking for</p>
+                <h2 id="featuresTitle">How Aslivo Works</h2>
+                <p id="featuresDesc">Three simple steps to find exactly what you're looking for</p>
             </div>
             
             <div class="cores">
@@ -913,18 +913,22 @@
         en: {
             heroTitle: "Don't lose the product you want because of language.",
             heroSubtitle: "Type in your language, scan a barcode or upload a photo — Aslivo finds the closest local match, shows price, badges (Halal/Vegan/Bio) and community ratings.",
-            heroLead: "No guesswork: get clear product matches, trusted badges and local offers — in your language.",
+            heroLead: "No barriers—difficulties: get right product matches near you with trusted badges and price-off — in your language.",
             startBot: 'Start on Telegram',
             howItWorks: 'How it works',
-            pilotTitle: 'Join the telegram Aslivo app pilot launch',
-            pilotSub: "Enter your email and we'll send the Telegram link and short instructions in your language. Limited spots.",
-            emailBtn: 'Get link',
+            pilotTitle: 'Join the pilot launch',
+            pilotSub: "Enter your email and we'll send the Telegram Aslivo app bot link and short instructions in your language.",
+            featuresTitle: 'How Aslivo Works',
+            featuresDesc: "Three simple steps to find exactly what you're looking for",
             c1Title: 'Recognize & Match (core)',
-            c1Desc: 'Aslivo breaks any language and cultural barriers. Just write in your own language, scan or upload a photo — and get the right local match instantly.',
+            c1Desc: 'Upload a photo, scan barcode or write in your language. Aslivo identifies the product and finds trusted local equivalents, with badges and community reviews.',
             c2Title: 'Fresh arrivals & pre-order',
-            c2Desc: 'discover fresh arrivals around your ethnic community store with exclusive price-off — get notified when they arrive.',
-            c3Title: 'deals from nearby ethnic stores',
-            c3Desc: 'App-only flash deals and community bundles from local ethnic stores that match your culture and taste.'
+            c2Desc: 'Reserve fresh arrivals or limited stock from nearby ethnic shops — get notified when they arrive.',
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'App-only deals and community bundles from local stores that match your culture and taste.',
+            imageTitle: 'Find Products in Your Language',
+            imageDesc: 'Aslivo does the rest for you! And presents the best match.',
+            openTelegram: 'Open on Telegram'
         },
 
         bn: {
@@ -935,13 +939,17 @@
             howItWorks: 'কিভাবে কাজ করে',
             pilotTitle: 'telegram Aslivo app পাইলট launch-এ যোগ দিন',
             pilotSub: 'ইমেইল দিন—আমরা টেলিগ্রাম লিংক ও সহজ নির্দেশনা পাঠাব।',
-            emailBtn: 'লিংক পেতে ক্লিক করুন',
-            c1Title: 'পণ্য শনাক্ত ও match (key feature)',
+            featuresTitle: 'Aslivo কিভাবে কাজ করে',
+            featuresDesc: 'আপনি যা খুঁজছেন, তা পেতে তিনটি সহজ ধাপ',
+            c1Title: 'Recognize & Match (core)',
             c1Desc: 'ছবি আপলোড করুন বা বারকোড স্ক্যান করুন — Aslivo স্থানীয় বিশ্বস্ত বিকল্প দেখাবে, রেটিং ও ব্যাজসহ।',
-            c2Title: 'fresh আগমন updates ও চাইলে প্রি-অর্ডার (দোকানে গিয়েই pay করুন)',
+            c2Title: 'Fresh arrivals & pre-order',
             c2Desc: 'নিকটস্থ দেশীয় বা লোকাল দোকান থেকে শাক-সবজি মাছ-মাংশ ফল-মুল কিংবা দেশীয় মিষ্টান্ন বা দেশীয় বিশেষ পন্য কোথায় কখন আসবে বা আসছে জানুন, আর যদি pre-order করেন তাহলে শুধু Aslivo তেই পাচ্ছেন বিশেষ আগমনী মূল্যছাড়। (Aslivo-তে অনলাইনেই নয় বরং কিনার সময় দেখেশুনে দোকানেই সরাসরি গিয়ে pay করা যায় একই মূল্যছাড়ে)',
-            c3Title: 'স্থানীয় এক্সক্লুসিভ অফার',
-            c3Desc: 'শুধু app-এই পাবেন লোকাল দেশীয় ও মার্কেটগুলো থেকে বিশেষ মূল্যছাড়'
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'শুধু app-এই পাবেন ইতালিতে লোকাল দেশীয় দোকান ও মার্কেটগুলো থেকে বিশেষ মূল্যছাড়',
+            imageTitle: 'আপনার ভাষায় পণ্য খুঁজুন',
+            imageDesc: 'আপনি শুধু বলুন, Aslivo বাকিটা করে দেবে! এবং সেরা match দেখাবে।',
+            openTelegram: 'টেলিগ্রামে খুলুন'
         },
 
         ur: {
@@ -952,13 +960,17 @@
             howItWorks: 'یہ کیسے کام کرتا ہے',
             pilotTitle: 'بولونیا پائلٹ میں شامل ہوں',
             pilotSub: 'اپنا ای میل دیں — ہم ٹیلگرام لنک اور آسان ہدایات آپکی زبان میں بھیجیں گے۔',
-            emailBtn: 'لنک حاصل کریں',
-            c1Title: 'پہچان اور ملاپ (مرکزی)',
+            featuresTitle: 'Aslivo کیسے کام کرتا ہے',
+            featuresDesc: 'جو آپ ڈھونڈ رہے ہیں، اسے پانے کے تین آسان طریقے',
+            c1Title: 'Recognize & Match (core)',
             c1Desc: 'تصویر اپ لوڈ کریں یا بارکوڈ اسکین کریں — Aslivo قابلِ اعتماد مقامی متبادل دکھائے گا، رائے اور بیجز کے ساتھ۔',
-            c2Title: 'پری آرڈر اور تازہ رسد',
-            c2Desc: 'قریبی دکانوں سے محدود اسٹاک محفوظ کریں — جب تازہ آئٹمز آئیں نوٹیفائی ہوں۔',
-            c3Title: 'مقامی خصوصی آفرز',
-            c3Desc: 'ایپ پر مخصوص ڈیلز اور کمیونٹی بنڈلز۔'
+            c2Title: 'Fresh arrivals & pre-order',
+            c2Desc: 'پری آرڈر اور تازہ رسد',
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'ایپ پر مخصوص ڈیلز اور کمیونٹی بنڈلز۔',
+            imageTitle: 'اپنی زبان میں مصنوعات تلاش کریں',
+            imageDesc: 'آپ بس بتائیں، Aslivo باقی کام کر دے گا! بہترین چیز دکھا دے گا۔',
+            openTelegram: 'ٹیلیگرام پر کھولیں'
         },
 
         ps: {
@@ -969,13 +981,17 @@
             howItWorks: 'څنګه کار کوي',
             pilotTitle: 'د بولونیا پائلټ کې ګډون وکړئ',
             pilotSub: 'خپل ایمیل ولیکئ — موږ به په خپل ژبه لنک او ساده لارښوونې واستوو.',
-            emailBtn: 'لینک ترلاسه کړئ',
-            c1Title: 'پیژندنه او میچ (اساسي)',
+            featuresTitle: 'Aslivo څنګه کار کوي',
+            featuresDesc: 'هغه شی چې تاسو یې په لټه کې یاست، د موندلو لپاره درې اسانه لارې',
+            c1Title: 'Recognize & Match (core)',
             c1Desc: 'انځور اپلوډ کړئ یا بارکوډ سکین کړئ — Aslivo باوري سیمه ییز بدیلونه، درجه بندي او بیجونه ښیي.',
-            c2Title: 'پری-آرډر او تازه راورسېدل',
-            c2Desc: 'د محلي هټۍ څخه محدود توکي وساتئ — تازه راغلل خبرتیا ترلاسه کړئ.',
-            c3Title: 'ځایي ځانګړي وړاندیزونه',
-            c3Desc: 'د اپ-یوازې معاملې او ټولنې بنډلونه.'
+            c2Title: 'Fresh arrivals & pre-order',
+            c2Desc: 'پری-آرډر او تازه راورسېدل',
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'د اپ-یوازې معاملې او ټولنې بنډلونه۔',
+            imageTitle: 'په خپله ژبه کې توکي ومومئ',
+            imageDesc: 'تاسو یوازې ووایاست، Aslivo به پاتې کار وکړي! غوره شی به وښیي۔',
+            openTelegram: 'په ټیلیګرام کې پرانیستل'
         },
 
         hi: {
@@ -986,13 +1002,17 @@
             howItWorks: 'कैसे काम करता है',
             pilotTitle: 'बोलोग्ना पायलट में शामिल हों',
             pilotSub: 'अपना ईमेल दें — हम Telegram लिंक और आसान निर्देश आपकी भाषा में भेजेंगे।',
-            emailBtn: 'लिंक पाएं',
-            c1Title: 'पहचानें और मिलाएँ (कोर)',
+            featuresTitle: 'Aslivo कैसे काम करता है',
+            featuresDesc: 'जो आप ढूंढ रहे हैं, उसे पाने के तीन आसान तरीके',
+            c1Title: 'Recognize & Match (core)',
             c1Desc: 'फोटो अपलोड करें या बारकोड स्कैन करें — Aslivo भरोसेमंद स्थानीय विकल्प दिखाएगा, रेटिंग्स और बैज के साथ।',
-            c2Title: 'प्री-ऑर्डर व ताज़ा आगमन',
-            c2Desc: 'नज़दीकी दुकानों से सीमित स्टॉक रिज़र्व करें — जैसे ही ताज़ा आए सूचना मिलें।',
-            c3Title: 'स्थानीय एक्सक्लूसिव ऑफ़र',
-            c3Desc: 'ऐप-विशेष डील और कम्युनिटी बंडल।'
+            c2Title: 'Fresh arrivals & pre-order',
+            c2Desc: 'प्री-ऑर्डर व ताज़ा आगमन',
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'ऐप-विशेष डील और कम्युनिटी बंडल।',
+            imageTitle: 'अपनी भाषा में उत्पाद खोजें',
+            imageDesc: 'आप बस बताइए, Aslivo बाकी काम कर देगा! बेस्ट मैच दिखा देगा।',
+            openTelegram: 'Telegram पर खोलें'
         },
 
         ar: {
@@ -1003,13 +1023,17 @@
             howItWorks: 'كيف يعمل',
             pilotTitle: 'انضم لتجربة بولونيا',
             pilotSub: 'أدخل بريدك الإلكتروني — سنرسل رابط تيليجرام وتعليمات قصيرة بلغتك.',
-            emailBtn: 'الحصول على الرابط',
-            c1Title: 'التعرّف والمطابقة (أساسي)',
+            featuresTitle: 'كيف يعمل Aslivo',
+            featuresDesc: 'ثلاث طرق سهلة للعثور على ما تبحث عنه',
+            c1Title: 'Recognize & Match (core)',
             c1Desc: 'حمّل صورة أو امسح الباركود — Aslivo يعرض بدائل محلية موثوقة مع تقييمات وشارات.',
-            c2Title: 'الطلب المسبق والوافدون الطازجون',
-            c2Desc: 'احجز مخزونًا محدودًا من المتاجر المحلية — وستصلك إشعارات عند وصول المنتجات الطازجة.',
-            c3Title: 'عروض محلية حصرية',
-            c3Desc: 'عروض خاصة على التطبيق وحزم مخصصة للمجتمع.'
+            c2Title: 'Fresh arrivals & pre-order',
+            c2Desc: 'الطلب المسبق والوافدون الطازجون',
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'عروض خاصة على التطبيق وحزم مخصصة للمجتمع.',
+            imageTitle: 'ابحث عن المنتجات بلغتك',
+            imageDesc: 'أنت فقط قل ماذا تريد، Aslivo يقوم بالباقي! ويظهر لك الأنسب.',
+            openTelegram: 'فتح على تيليجرام'
         },
 
         id: {
@@ -1020,13 +1044,17 @@
             howItWorks: 'Cara kerja',
             pilotTitle: 'Ikut pilot',
             pilotSub: 'Masukkan email Anda — kami akan mengirim tautan Telegram dan instruksi singkat dalam bahasa Anda.',
-            emailBtn: 'Dapatkan tautan',
-            c1Title: 'Kenali & Cocokkan (inti)',
+            featuresTitle: 'Cara Aslivo Bekerja',
+            featuresDesc: 'Tiga cara mudah untuk menemukan apa yang Anda cari',
+            c1Title: 'Recognize & Match (core)',
             c1Desc: 'Unggah foto atau pindai barcode — Aslivo menampilkan padanan lokal tepercaya dengan ulasan dan badge.',
-            c2Title: 'Kedatangan Segar & pre-order',
-            c2Desc: 'Pesan stok terbatas dari toko etnis terdekat — dapatkan notifikasi saat barang tiba.',
-            c3Title: 'Penawaran Lokal Eksklusif',
-            c3Desc: 'Penawaran khusus aplikasi dan bundel komunitas.'
+            c2Title: 'Fresh arrivals & pre-order',
+            c2Desc: 'Kedatangan Segar & pre-order',
+            c3Title: 'Exclusive local offers',
+            c3Desc: 'Penawaran khusus aplikasi dan bundel komunitas.',
+            imageTitle: 'Temukan Produk dalam Bahasa Anda',
+            imageDesc: 'Anda cukup bilang, Aslivo urus sisanya! Kasih pilihan terbaik.',
+            openTelegram: 'Buka di Telegram'
         },
 
         tl: {
@@ -1037,13 +1065,17 @@
             howItWorks: 'Paano gumagana',
             pilotTitle: 'Sumali sa pilot',
             pilotSub: 'Ilagay ang iyong email — ipapadala namin ang Telegram link at maikling instruksyon sa iyong wika.',
-            emailBtn: 'Kunin ang link',
-            c1Title: 'Kilalanin & Itugma (core)',
+            featuresTitle: 'Paano Gumagana ang Aslivo',
+            featuresDesc: 'Tatlong madaling paraan para mahanap ang hinahanap mo',
+            c1Title: 'Recognize & Match (core)',
             c1Desc: 'Mag-upload ng larawan o i-scan ang barcode — ipinapakita ng Aslivo ang pinagkakatiwalaang lokal na katumbas, may reviews at badge.',
             c2Title: 'Fresh arrivals & pre-order',
-            c2Desc: 'Mag-reserve ng limitadong stock mula sa kalapit na ethnic shop — makakatanggap ka ng notification kapag dumating.',
+            c2Desc: 'Fresh arrivals & pre-order',
             c3Title: 'Exclusive local offers',
-            c3Desc: 'App-only deals at community bundles mula sa lokal na tindahan.'
+            c3Desc: 'App-only deals at community bundles mula sa lokal na tindahan.',
+            imageTitle: 'Maghanap ng Mga Produkto sa Iyong Wika',
+            imageDesc: 'Ikaw lang magsabi, Aslivo bahala sa iba! Ipapakita ang pinakamagandang match.',
+            openTelegram: 'Buksan sa Telegram'
         }
     };
 
@@ -1090,13 +1122,17 @@
         document.getElementById('howItWorks').textContent = t.howItWorks;
         document.getElementById('pilotTitle').textContent = t.pilotTitle;
         document.getElementById('pilotSub').textContent = t.pilotSub;
-        document.getElementById('emailBtn').textContent = t.emailBtn;
+        document.getElementById('featuresTitle').textContent = t.featuresTitle;
+        document.getElementById('featuresDesc').textContent = t.featuresDesc;
         document.getElementById('c1-title').textContent = t.c1Title;
         document.getElementById('c1-desc').textContent = t.c1Desc;
         document.getElementById('c2-title').textContent = t.c2Title;
         document.getElementById('c2-desc').textContent = t.c2Desc;
         document.getElementById('c3-title').textContent = t.c3Title;
         document.getElementById('c3-desc').textContent = t.c3Desc;
+        document.getElementById('imageTitle').textContent = t.imageTitle;
+        document.getElementById('imageDesc').textContent = t.imageDesc;
+        document.getElementById('tgOpen').textContent = t.openTelegram;
         
         if (lang === 'bn') {
             document.documentElement.classList.add('bn');
@@ -1137,38 +1173,9 @@
         window.open(TG_BOT_LINK, '_blank');
     });
 
-    // Email signup
-    document.getElementById('emailBtn').addEventListener('click', function() {
-        const email = document.getElementById('email').value;
-        if (!/^\S+@\S+\.\S+$/.test(email)) {
-            alert('Please enter a valid email');
-            return;
-        }
-        alert('Thanks — check your inbox for the pilot link.');
-        document.getElementById('email').value = '';
-    });
-
     // How it works
     document.getElementById('howItWorks').addEventListener('click', function() {
         alert('How it works:\n1) Send name/photo/barcode in your language → 2) Aslivo finds local matches + badges + prices → 3) Choose, reserve or go to store.');
-
-// Fix all buttons
-document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-    document.getElementById('controls').classList.toggle('active');
-});
-
-document.getElementById('startBot').addEventListener('click', function() {
-    window.open('https://t.me/aslivo_bot', '_blank');
-});
-
-document.getElementById('tgOpen').addEventListener('click', function() {
-    window.open('https://t.me/aslivo_bot', '_blank');
-});
-
-document.getElementById('howItWorks').addEventListener('click', function() {
-    alert('How it works:\n1) Send name/photo/barcode in your language → 2) Aslivo finds local matches + badges + prices → 3) Choose, reserve or go to store.');
-});
-
     });
 </script>
 </body>
