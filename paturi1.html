@@ -723,6 +723,72 @@
 }
 
     </style>
+
+<!-- Google Analytics -->
+<script async src="GA-369860952"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA-369860952');
+
+  // Scroll tracking
+  document.addEventListener('DOMContentLoaded', function() {
+    let scrollPercentages = [25, 50, 75, 90];
+    let tracked = [];
+    
+    window.addEventListener('scroll', function() {
+      let scrollTop = window.scrollY;
+      let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      let scrollPercent = (scrollTop / docHeight) * 100;
+      
+      scrollPercentages.forEach(function(percentage) {
+        if (scrollPercent >= percentage && !tracked.includes(percentage)) {
+          tracked.push(percentage);
+          gtag('event', 'scroll_depth', {
+            'event_category': 'Engagement',
+            'event_label': 'Scrolled to ' + percentage + '%',
+            'value': percentage
+          });
+        }
+      });
+    });
+
+    // Button click tracking - tracks ALL buttons
+    document.addEventListener('click', function(e) {
+      if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+        const button = e.target.tagName === 'BUTTON' ? e.target : e.target.closest('button');
+        const buttonText = button.textContent.trim().substring(0, 50);
+        const buttonId = button.id || 'no-id';
+        
+        gtag('event', 'button_click', {
+          'event_category': 'Interaction',
+          'event_label': buttonText,
+          'button_id': buttonId
+        });
+      }
+    });
+
+    // Section visibility tracking (which parts users read)
+    const sections = document.querySelectorAll('section, .hero, .features, .signup');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionName = entry.target.id || entry.target.className;
+          gtag('event', 'section_view', {
+            'event_category': 'Content Engagement',
+            'event_label': sectionName,
+            'value': Math.round(entry.intersectionRatio * 100)
+          });
+        }
+      });
+    }, { threshold: [0.1, 0.5, 1.0] });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
 </head>
 <body>
     <header>
