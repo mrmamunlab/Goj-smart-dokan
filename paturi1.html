@@ -2606,14 +2606,14 @@ document.querySelectorAll('.view-more').forEach(link => {
 });
 
 // Initialize demo with current language
+
 function initDemo() {
     const lang = localStorage.getItem('aslivo_lang') || 'en';
     applyDemoTranslations(lang);
 }
-    applyDemoTranslations(savedLang); // ← USE SAVED LANGUAGE
-}
-    applyDemoTranslations(demoCurrentLang);
-}
+
+// Initialize with the saved language
+applyDemoTranslations(savedLang);
 
 // Update demo when language changes
 const originalApplyLang = window.applyLang;
