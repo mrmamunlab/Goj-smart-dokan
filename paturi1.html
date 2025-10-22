@@ -2606,7 +2606,10 @@ document.querySelectorAll('.view-more').forEach(link => {
 
 // Initialize demo with current language
 function initDemo() {
-    demoCurrentLang = localStorage.getItem('aslivo_lang') || 'en';
+    const savedLang = localStorage.getItem('aslivo_lang') || 'en';
+
+    applyDemoTranslations(savedLang); // ← USE SAVED LANGUAGE
+}
     applyDemoTranslations(demoCurrentLang);
 }
 
