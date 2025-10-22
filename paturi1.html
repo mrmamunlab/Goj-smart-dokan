@@ -650,7 +650,7 @@
             cursor: pointer;
         }
 
-        @media (max-width: 767px) {
+                @media (max-width: 767px) {
             .mobile-menu-btn {
                 display: block;
             }
@@ -675,6 +675,7 @@
                 transform: translateY(0);
                 opacity: 1;
             }
+        } 
 
 /* Bengali font class */
 .bn {
@@ -700,6 +701,7 @@
         box-shadow: none;
         background: transparent;
     }
+} 
 
 /* Mobile language selector fix */
 @media (max-width: 767px) {
@@ -711,6 +713,7 @@
         width: auto !important;
         z-index: 1002 !important;
     }
+}
     
     .controls {
         position: static !important;
@@ -721,7 +724,7 @@
         background: transparent !important;
     }
 
-}
+
 
 /* Recognize & Match Demo Styles */
 .demo-section {
@@ -2336,7 +2339,7 @@ const DEMO_PRODUCTS = {
 // Demo State
 let currentDemoProduct = null;
 let demoQuantity = 1;
-let savedLang = 'en';
+let demoCurrentLang = savedLang;
 
 // Demo Elements
 const demoSearchScreen = document.getElementById('demoSearchScreen');
@@ -2603,12 +2606,9 @@ document.querySelectorAll('.view-more').forEach(link => {
 
 // Initialize demo with current language
 function initDemo() {
-    savedLang = localStorage.getItem('aslivo_lang') || 'en';
-    applyDemoTranslations(savedLang);
+    demoCurrentLang = localStorage.getItem('aslivo_lang') || 'en';
+    applyDemoTranslations(demoCurrentLang);
 }
-
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', initDemo);
 
 // Update demo when language changes
 const originalApplyLang = window.applyLang;
@@ -2616,7 +2616,7 @@ window.applyLang = function(lang) {
     if (originalApplyLang) {
         originalApplyLang(lang);
     }
-    savedLang = lang;
+    demoCurrentLang = lang;
     applyDemoTranslations(lang);
 };
 
