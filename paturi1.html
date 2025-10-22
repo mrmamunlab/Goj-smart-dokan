@@ -2606,8 +2606,9 @@ document.querySelectorAll('.view-more').forEach(link => {
 
 // Initialize demo with current language
 function initDemo() {
-    const savedLang = localStorage.getItem('aslivo_lang') || 'en';
-
+    const lang = localStorage.getItem('aslivo_lang') || 'en';
+    applyDemoTranslations(lang);
+}
     applyDemoTranslations(savedLang); // ← USE SAVED LANGUAGE
 }
     applyDemoTranslations(demoCurrentLang);
