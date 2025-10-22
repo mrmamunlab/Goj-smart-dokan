@@ -722,6 +722,489 @@
     }
 }
 
+/* Recognize & Match Demo Styles */
+.demo-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+    position: relative;
+}
+
+.demo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    position: relative;
+}
+
+.demo-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+}
+
+.demo-header {
+    padding: 30px;
+    text-align: center;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.demo-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.demo-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.demo-content {
+    padding: 30px;
+}
+
+/* Search Input Demo */
+.demo-search-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.demo-search-input {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    transition: var(--transition);
+    background: var(--white);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
+}
+
+.demo-search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+}
+
+.demo-search-hint {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: var(--white);
+    padding: 0 10px;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.demo-search-input:focus + .demo-search-hint {
+    opacity: 1;
+}
+
+.demo-search-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.demo-option-btn {
+    flex: 1;
+    padding: 15px;
+    background: var(--bg-light);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.demo-option-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
+}
+
+/* Results Sections */
+.demo-results {
+    display: none;
+    animation: fadeInUp 0.6s ease;
+}
+
+.demo-results.active {
+    display: block;
+}
+
+.demo-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.demo-back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-light);
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demo-back-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateX(-3px);
+}
+
+.demo-section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.view-more {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.view-more:hover {
+    color: var(--primary-dark);
+}
+
+/* Product Cards */
+.demo-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.demo-product-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 2px solid transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+.demo-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.15);
+    border-color: var(--primary);
+}
+
+.demo-product-card.selected {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--white), rgba(139, 92, 246, 0.05));
+}
+
+.demo-product-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.demo-product-badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.demo-badge {
+    background: var(--primary);
+    color: var(--white);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.demo-badge.halal {
+    background: var(--secondary);
+}
+
+.demo-badge.vegan {
+    background: var(--accent);
+}
+
+.demo-product-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.demo-product-store {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.demo-product-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.demo-current-price {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.demo-original-price {
+    font-size: 1rem;
+    color: var(--text-light);
+    text-decoration: line-through;
+}
+
+.demo-discount {
+    background: var(--accent);
+    color: var(--white);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.demo-product-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+/* Product Details */
+.demo-product-details {
+    display: none;
+    animation: fadeInUp 0.6s ease;
+}
+
+.demo-product-details.active {
+    display: block;
+}
+
+.demo-product-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.demo-product-image-large {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.demo-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.demo-save-btn {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.demo-save-btn.active {
+    color: #e74c3c;
+}
+
+.demo-save-btn:hover {
+    transform: scale(1.2);
+}
+
+.demo-quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--bg-light);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.demo-quantity-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demo-quantity-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.demo-quantity-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    min-width: 30px;
+    text-align: center;
+}
+
+.demo-total-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.demo-reviews-section {
+    background: var(--bg-light);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.demo-reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.demo-review {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.demo-review:last-child {
+    border-bottom: none;
+}
+
+.demo-review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.demo-review-author {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.demo-review-rating {
+    color: var(--accent);
+}
+
+.demo-review-text {
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.demo-other-options {
+    margin-top: 30px;
+}
+
+.demo-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+/* Toast for demo */
+.demo-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--primary);
+    color: var(--white);
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.demo-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Demo animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .demo-product-hero {
+        grid-template-columns: 1fr;
+    }
+    
+    .demo-products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .demo-options-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
     </style>
 
 <!-- Google Analytics -->
@@ -1091,6 +1574,180 @@
                         </div>
                     </div>
                 </div>
+
+<!-- Recognize & Match Demo Section -->
+
+<section class="demo-section" id="demoSection">
+    <div class="demo-container">
+        <div class="demo-header">
+            <h3 class="demo-title" id="demoTitle">Try Recognize & Match</h3>
+            <p class="demo-subtitle" id="demoSubtitle">Experience how Aslivo finds products matching your preferences</p>
+        </div>
+        
+        <div class="demo-content">
+            <!-- Search Screen -->
+            <div class="demo-search-screen" id="demoSearchScreen">
+                <div class="demo-search-container">
+                    <input type="text" class="demo-search-input" placeholder=" " id="demoSearchInput">
+                    <div class="demo-search-hint" id="demoSearchHint">Try "Ruchi Chanachur" or "Arabic Sweets"</div>
+                </div>
+                
+                <div class="demo-search-options">
+                    <button class="demo-option-btn">
+                        <i class="fas fa-camera"></i>
+                        <span id="uploadPhotoText">Upload Photo</span>
+                    </button>
+                    <button class="demo-option-btn">
+                        <i class="fas fa-barcode"></i>
+                        <span id="scanBarcodeText">Scan Barcode</span>
+                    </button>
+                </div>
+                
+                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="demoSearchBtn">
+                    <i class="fas fa-search"></i>
+                    <span id="findProductsText">Find Products</span>
+                </button>
+            </div>
+            
+            <!-- Results Screen -->
+            <div class="demo-results" id="demoResults">
+                <div class="demo-results-header">
+                    <button class="demo-back-btn" id="demoBackToSearch">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h4 class="demo-section-title" id="resultsTitle">Product Matches</h4>
+                    <div></div>
+                </div>
+                
+                <!-- Aslivo Choice -->
+                <div class="demo-results-section">
+                    <div class="demo-results-header">
+                        <h5 id="aslivoChoiceTitle">Aslivo Choice for You</h5>
+                        <a class="view-more" id="viewMoreChoice">View more</a>
+                    </div>
+                    <div class="demo-products-grid" id="aslivoChoiceProducts">
+                        <!-- Products will be inserted by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Ethnic Store Matches -->
+                <div class="demo-results-section">
+                    <div class="demo-results-header">
+                        <h5 id="ethnicMatchesTitle">Available in Nearby Ethnic Stores</h5>
+                        <a class="view-more" id="viewMoreEthnic">View more</a>
+                    </div>
+                    <div class="demo-products-grid" id="ethnicStoreProducts">
+                        <!-- Products will be inserted by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Local Variants -->
+                <div class="demo-results-section">
+                    <div class="demo-results-header">
+                        <h5 id="localVariantsTitle">Local Variants / Alternatives</h5>
+                        <a class="view-more" id="viewMoreLocal">View more</a>
+                    </div>
+                    <div class="demo-products-grid" id="localVariantProducts">
+                        <!-- Products will be inserted by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Details Screen -->
+            <div class="demo-product-details" id="demoProductDetails">
+                <div class="demo-results-header">
+                    <button class="demo-back-btn" id="demoBackToResults">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h4 class="demo-section-title" id="productDetailsTitle">Product Details</h4>
+                    <button class="demo-save-btn" id="demoSaveProduct">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+                
+                <div class="demo-product-hero">
+                    <img id="demoProductImage" src="" alt="Product" class="demo-product-image-large">
+                    <div class="demo-product-info">
+                        <h3 id="demoProductName">Product Name</h3>
+                        <div class="demo-product-store">
+                            <i class="fas fa-store"></i>
+                            <span id="demoProductStore">Store Name • Culture</span>
+                        </div>
+                        
+                        <div class="demo-product-badges" id="demoProductBadges">
+                            <!-- Badges will be inserted by JavaScript -->
+                        </div>
+                        
+                        <div class="demo-product-price">
+                            <span class="demo-current-price" id="demoCurrentPrice">$0.00</span>
+                            <span class="demo-original-price" id="demoOriginalPrice">$0.00</span>
+                            <span class="demo-discount" id="demoDiscount">-0%</span>
+                        </div>
+                        
+                        <div class="demo-product-meta">
+                            <span><i class="fas fa-location-arrow"></i> <span id="demoDistance">0 km</span></span>
+                            <span><i class="fas fa-star"></i> <span id="demoRating">0.0</span></span>
+                        </div>
+                        
+                        <div class="demo-quantity-selector">
+                            <span>Quantity:</span>
+                            <button class="demo-quantity-btn" id="demoDecreaseQty">-</button>
+                            <span class="demo-quantity-value" id="demoQuantityValue">1</span>
+                            <button class="demo-quantity-btn" id="demoIncreaseQty">+</button>
+                            <div class="demo-total-price" id="demoTotalPrice">$0.00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-reviews-section">
+                    <div class="demo-reviews-header">
+                        <h5 id="reviewsTitle">User Reviews (3)</h5>
+                        <a class="view-more" id="viewMoreReviews">View more</a>
+                    </div>
+                    
+                    <div class="demo-review">
+                        <div class="demo-review-header">
+                            <span class="demo-review-author">Rahman</span>
+                            <span class="demo-review-rating">★★★★★</span>
+                        </div>
+                        <p class="demo-review-text">Perfect for biryani! Authentic taste and great quality.</p>
+                    </div>
+                    
+                    <div class="demo-review">
+                        <div class="demo-review-header">
+                            <span class="demo-review-author">Fatima</span>
+                            <span class="demo-review-rating">★★★★☆</span>
+                        </div>
+                        <p class="demo-review-text">Good value for money. Will buy again.</p>
+                    </div>
+                    
+                    <div class="demo-review">
+                        <div class="demo-review-header">
+                            <span class="demo-review-author">Ahmed</span>
+                            <span class="demo-review-rating">★★★★★</span>
+                        </div>
+                        <p class="demo-review-text">Very fresh and authentic. Perfect for my recipes.</p>
+                    </div>
+                </div>
+                
+                <div class="demo-other-options">
+                    <div class="demo-results-header">
+                        <h5 id="otherOptionsTitle">Other Options</h5>
+                    </div>
+                    <div class="demo-options-grid" id="demoOtherOptions">
+                        <!-- Other options will be inserted by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Toast -->
+<div class="demo-toast" id="demoToast">
+    <i class="fas fa-info-circle"></i>
+    <span id="demoToastMessage">This is a prototype feature</span>
+</div>
 
                 <div class="core" id="core2">
                     <div style="display:flex;gap:12px;align-items:center">
@@ -1471,6 +2128,497 @@ document.getElementById('quoteText').textContent = t.quoteText;
     document.getElementById('howItWorks').addEventListener('click', function() {
         alert('How it works:\n1) Send name/photo/barcode in your language → 2) Aslivo finds local matches + badges + prices → 3) Choose, reserve or go to store.');
     });
+
+// Demo Feature Functionality
+const DEMO_TRANSLATIONS = {
+    en: {
+        demoTitle: "Try Recognize & Match",
+        demoSubtitle: "Experience how Aslivo finds products matching your preferences",
+        uploadPhotoText: "Upload Photo",
+        scanBarcodeText: "Scan Barcode", 
+        findProductsText: "Find Products",
+        resultsTitle: "Product Matches",
+        aslivoChoiceTitle: "Aslivo Choice for You",
+        ethnicMatchesTitle: "Available in Nearby Ethnic Stores",
+        localVariantsTitle: "Local Variants / Alternatives",
+        productDetailsTitle: "Product Details",
+        reviewsTitle: "User Reviews",
+        otherOptionsTitle: "Other Options",
+        viewMoreText: "View more",
+        searchHint: "Try 'Ruchi Chanachur' or 'Arabic Sweets'",
+        prototypeMessage: "This is a prototype. In the real app you'll see more results.",
+        reviewsMessage: "When you use the real app, you'll see more authentic reviews.",
+        savedMessage: "Product saved to your favorites",
+        removedMessage: "Product removed from favorites"
+    },
+    bn: {
+        demoTitle: "Recognize & Match ব্যবহার করে দেখুন",
+        demoSubtitle: "অনুভব করুন Aslivo কীভাবে আপনার পছন্দের পণ্য খুঁজে বের করে",
+        uploadPhotoText: "ছবি আপলোড করুন",
+        scanBarcodeText: "বারকোড স্ক্যান করুন",
+        findProductsText: "পণ্য খুঁজুন", 
+        resultsTitle: "পণ্যের মিলসমূহ",
+        aslivoChoiceTitle: "আপনার জন্য Aslivo-র পছন্দ",
+        ethnicMatchesTitle: "কাছাকাছি দেশীয় দোকানে পাওয়া যাবে",
+        localVariantsTitle: "স্থানীয় বিকল্প / ভিন্নতা",
+        productDetailsTitle: "পণ্যের বিস্তারিত",
+        reviewsTitle: "ব্যবহারকারীদের মতামত",
+        otherOptionsTitle: "অন্যান্য বিকল্প",
+        viewMoreText: "আরও দেখুন",
+        searchHint: "'Ruchi Chanachur' বা 'Arabic Sweets' লিখুন",
+        prototypeMessage: "এটি একটি প্রোটোটাইপ। আসল অ্যাপে আপনি আরও ফলাফল দেখতে পাবেন।",
+        reviewsMessage: "আসল অ্যাপ ব্যবহার করলে আপনি আরও ব্যবহারকারীর মতামত দেখতে পাবেন।",
+        savedMessage: "পণ্য আপনার পছন্দের তালিকায় সংরক্ষিত হয়েছে",
+        removedMessage: "পণ্য পছন্দের তালিকা থেকে সরানো হয়েছে"
+    },
+    ur: {
+        demoTitle: "Recognize & Match آزمائیں",
+        demoSubtitle: "Aslivo کیسے آپ کی ترجیحات کے مطابق مصنوعات ڈھونڈتا ہے",
+        uploadPhotoText: "تصویر اپ لوڈ کریں",
+        scanBarcodeText: "بارکوڈ اسکین کریں",
+        findProductsText: "مصنوعات ڈھونڈیں",
+        resultsTitle: "مصنوعات کے میچ",
+        aslivoChoiceTitle: "آپ کے لیے Aslivo کا انتخاب",
+        ethnicMatchesTitle: "قریبی نسلی دکانوں میں دستیاب",
+        localVariantsTitle: "مقامی متبادل / مختلف شکلیں", 
+        productDetailsTitle: "مصنوعات کی تفصیلات",
+        reviewsTitle: "صارفین کے جائزے",
+        otherOptionsTitle: "دوسرے آپشنز",
+        viewMoreText: "مزید دیکھیں",
+        searchHint: "'Ruchi Chanachur' یا 'Arabic Sweets' لکھیں",
+        prototypeMessage: "یہ ایک پروٹوٹائپ ہے۔ اصل ایپ میں آپ کو مزید نتائج ملیں گے۔",
+        reviewsMessage: "جب آپ اصل ایپ استعمال کریں گے تو آپ کو مزید جائزے ملیں گے۔",
+        savedMessage: "پسندیدہ میں محفوظ ہو گیا",
+        removedMessage: "پسندیدہ سے ہٹا دیا گیا"
+    },
+    // Add other languages following the same pattern...
+    hi: {
+        demoTitle: "Recognize & Match आज़माएं",
+        demoSubtitle: "अनुभव करें Aslivo आपकी पसंद के उत्पाद कैसे ढूंढता है",
+        uploadPhotoText: "फोटो अपलोड करें",
+        scanBarcodeText: "बारकोड स्कैन करें", 
+        findProductsText: "उत्पाद खोजें",
+        resultsTitle: "उत्पाद मैच",
+        aslivoChoiceTitle: "आपके लिए Aslivo की पसंद",
+        ethnicMatchesTitle: "पास की जातीय दुकानों में उपलब्ध",
+        localVariantsTitle: "स्थानीय विकल्प / प्रकार",
+        productDetailsTitle: "उत्पाद विवरण",
+        reviewsTitle: "उपयोगकर्ता समीक्षाएं",
+        otherOptionsTitle: "अन्य विकल्प",
+        viewMoreText: "और देखें",
+        searchHint: "'Ruchi Chanachur' या 'Arabic Sweets' लिखें",
+        prototypeMessage: "यह एक प्रोटोटाइप है। असली ऐप में आपको और परिणाम दिखेंगे।",
+        reviewsMessage: "जब आप असली ऐप इस्तेमाल करेंगे तो आपको और समीक्षाएं दिखेंगी।",
+        savedMessage: "उत्पाद पसंदीदा में सहेजा गया",
+        removedMessage: "पसंदीदा से हटाया गया"
+    },
+    ar: {
+        demoTitle: "جرب Recognize & Match",
+        demoSubtitle: "اختبر كيف يجد Aslivo المنتجات التي تطابق تفضيلاتك",
+        uploadPhotoText: "رفع صورة",
+        scanBarcodeText: "مسح الباركود",
+        findProductsText: "البحث عن المنتجات",
+        resultsTitle: "مطابقات المنتج", 
+        aslivoChoiceTitle: "اختيار Aslivo لك",
+        ethnicMatchesTitle: "متوفر في المتاجر العرقية القريبة",
+        localVariantsTitle: "البدائل المحلية / المتغيرات",
+        productDetailsTitle: "تفاصيل المنتج",
+        reviewsTitle: "تقييمات المستخدمين",
+        otherOptionsTitle: "خيارات أخرى",
+        viewMoreText: "عرض المزيد",
+        searchHint: "اكتب 'Ruchi Chanachur' أو 'Arabic Sweets'",
+        prototypeMessage: "هذا نموذج أولي. في التطبيق الحقيقي سترى المزيد من النتائج.",
+        reviewsMessage: "عند استخدام التطبيق الحقيقي سترى المزيد من التقييمات.",
+        savedMessage: "تم حفظ المنتج في المفضلة",
+        removedMessage: "تمت إزالته من المفضلة"
+    }
+};
+
+// Demo Products Data
+const DEMO_PRODUCTS = {
+    "ruchi chanachur": {
+        aslivoChoice: [
+            {
+                id: 1,
+                name: "Ruchi Chanachur",
+                store: "Bangladeshi Bazar",
+                originalPrice: 3.99,
+                currentPrice: 2.49,
+                discount: 38,
+                distance: "1.2 km",
+                rating: 4.8,
+                image: "https://rukminim2.flixcart.com/image/416/416/kq5iykw0/snack-savourie/u/h/h/400-chanachur-ruchi-original-imag4hye7mhhvzaz.jpeg?q=70",
+                badges: ["halal"],
+                culture: "Bangladeshi"
+            }
+        ],
+        ethnicStore: [
+            {
+                id: 2,
+                name: "Pran's Chanachur", 
+                store: "Deshi Store",
+                originalPrice: 4.49,
+                currentPrice: 3.29,
+                discount: 27,
+                distance: "2.5 km",
+                rating: 4.7,
+                image: "https://rukminim2.flixcart.com/image/416/416/kq5iykw0/snack-savourie/u/h/h/400-chanachur-ruchi-original-imag4hye7mhhvzaz.jpeg?q=70",
+                badges: ["halal"],
+                culture: "Bangladeshi"
+            }
+        ],
+        localVariants: [
+            {
+                id: 3,
+                name: "Bombay Mix",
+                store: "Italian Deli",
+                originalPrice: 3.99,
+                currentPrice: 2.99,
+                discount: 25,
+                distance: "1.8 km",
+                rating: 4.5,
+                image: "https://rukminim2.flixcart.com/image/416/416/kq5iykw0/snack-savourie/u/h/h/400-chanachur-ruchi-original-imag4hye7mhhvzaz.jpeg?q=70",
+                badges: [],
+                culture: "Italian"
+            }
+        ]
+    },
+    "arabic sweets": {
+        aslivoChoice: [
+            {
+                id: 4,
+                name: "Assorted Baklava",
+                store: "Mediterranean Sweets",
+                originalPrice: 24.99,
+                currentPrice: 18.99,
+                discount: 24,
+                distance: "3.2 km",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                badges: ["halal"],
+                culture: "Arabic/Turkish"
+            }
+        ],
+        ethnicStore: [
+            {
+                id: 5,
+                name: "Kunafa Dessert",
+                store: "Arabian Delights", 
+                originalPrice: 16.99,
+                currentPrice: 12.99,
+                discount: 24,
+                distance: "2.7 km",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                badges: ["halal"],
+                culture: "Arabic"
+            }
+        ],
+        localVariants: [
+            {
+                id: 6,
+                name: "French Pastries",
+                store: "European Bakery",
+                originalPrice: 14.99,
+                currentPrice: 10.99,
+                discount: 27,
+                distance: "1.4 km",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                badges: [],
+                culture: "French"
+            }
+        ]
+    }
+};
+
+// Demo State
+let currentDemoProduct = null;
+let demoQuantity = 1;
+let savedLang = 'en';
+
+// Demo Elements
+const demoSearchScreen = document.getElementById('demoSearchScreen');
+const demoResults = document.getElementById('demoResults');
+const demoProductDetails = document.getElementById('demoProductDetails');
+const demoSearchInput = document.getElementById('demoSearchInput');
+const demoSearchHint = document.getElementById('demoSearchHint');
+const demoSearchBtn = document.getElementById('demoSearchBtn');
+const demoBackToSearch = document.getElementById('demoBackToSearch');
+const demoBackToResults = document.getElementById('demoBackToResults');
+const demoSaveProduct = document.getElementById('demoSaveProduct');
+const demoDecreaseQty = document.getElementById('demoDecreaseQty');
+const demoIncreaseQty = document.getElementById('demoIncreaseQty');
+const demoQuantityValue = document.getElementById('demoQuantityValue');
+const demoTotalPrice = document.getElementById('demoTotalPrice');
+const demoToast = document.getElementById('demoToast');
+
+// Apply demo translations
+function applyDemoTranslations(lang) {
+    const t = DEMO_TRANSLATIONS[lang] || DEMO_TRANSLATIONS['en'];
+    
+    document.getElementById('demoTitle').textContent = t.demoTitle;
+    document.getElementById('demoSubtitle').textContent = t.demoSubtitle;
+    document.getElementById('uploadPhotoText').textContent = t.uploadPhotoText;
+    document.getElementById('scanBarcodeText').textContent = t.scanBarcodeText;
+    document.getElementById('findProductsText').textContent = t.findProductsText;
+    document.getElementById('resultsTitle').textContent = t.resultsTitle;
+    document.getElementById('aslivoChoiceTitle').textContent = t.aslivoChoiceTitle;
+    document.getElementById('ethnicMatchesTitle').textContent = t.ethnicMatchesTitle;
+    document.getElementById('localVariantsTitle').textContent = t.localVariantsTitle;
+    document.getElementById('productDetailsTitle').textContent = t.productDetailsTitle;
+    document.getElementById('reviewsTitle').textContent = t.reviewsTitle + ' (3)';
+    document.getElementById('otherOptionsTitle').textContent = t.otherOptionsTitle;
+    
+    // Update all "View more" links
+    document.querySelectorAll('.view-more').forEach(link => {
+        link.textContent = t.viewMoreText;
+    });
+    
+    demoSearchHint.textContent = t.searchHint;
+}
+
+// Show demo toast
+function showDemoToast(message) {
+    document.getElementById('demoToastMessage').textContent = message;
+    demoToast.classList.add('show');
+    setTimeout(() => {
+        demoToast.classList.remove('show');
+    }, 3000);
+}
+
+// Show screen
+function showDemoScreen(screen) {
+    demoSearchScreen.style.display = 'none';
+    demoResults.style.display = 'none';
+    demoProductDetails.style.display = 'none';
+    
+    screen.style.display = 'block';
+    screen.classList.add('active');
+}
+
+// Generate product cards
+function generateDemoProductCards(searchTerm) {
+    const searchData = DEMO_PRODUCTS[searchTerm.toLowerCase()];
+    if (!searchData) {
+        showDemoToast("Try 'Ruchi Chanachur' or 'Arabic Sweets' to see demo results");
+        return;
+    }
+    
+    // Clear existing products
+    document.getElementById('aslivoChoiceProducts').innerHTML = '';
+    document.getElementById('ethnicStoreProducts').innerHTML = '';
+    document.getElementById('localVariantProducts').innerHTML = '';
+    document.getElementById('demoOtherOptions').innerHTML = '';
+    
+    // Generate Aslivo Choice products
+    searchData.aslivoChoice.forEach(product => {
+        const card = createDemoProductCard(product);
+        card.addEventListener('click', () => showDemoProductDetails(product));
+        document.getElementById('aslivoChoiceProducts').appendChild(card);
+        
+        // Add to other options
+        const optionCard = createDemoProductCard(product);
+        optionCard.addEventListener('click', () => selectDemoOption(product));
+        document.getElementById('demoOtherOptions').appendChild(optionCard);
+    });
+    
+    // Generate Ethnic Store products
+    searchData.ethnicStore.forEach(product => {
+        const card = createDemoProductCard(product);
+        card.addEventListener('click', () => showDemoProductDetails(product));
+        document.getElementById('ethnicStoreProducts').appendChild(card);
+        
+        // Add to other options
+        const optionCard = createDemoProductCard(product);
+        optionCard.addEventListener('click', () => selectDemoOption(product));
+        document.getElementById('demoOtherOptions').appendChild(optionCard);
+    });
+    
+    // Generate Local Variant products
+    searchData.localVariants.forEach(product => {
+        const card = createDemoProductCard(product);
+        card.addEventListener('click', () => showDemoProductDetails(product));
+        document.getElementById('localVariantProducts').appendChild(card);
+        
+        // Add to other options
+        const optionCard = createDemoProductCard(product);
+        optionCard.addEventListener('click', () => selectDemoOption(product));
+        document.getElementById('demoOtherOptions').appendChild(optionCard);
+    });
+    
+    showDemoScreen(demoResults);
+}
+
+// Create product card
+function createDemoProductCard(product) {
+    const card = document.createElement('div');
+    card.className = 'demo-product-card';
+    card.dataset.productId = product.id;
+    
+    const badgesHTML = product.badges.map(badge => 
+        `<div class="demo-badge ${badge}">${badge.charAt(0).toUpperCase() + badge.slice(1)}</div>`
+    ).join('');
+    
+    card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="demo-product-image">
+        <div class="demo-product-badges">${badgesHTML}</div>
+        <h4 class="demo-product-title">${product.name}</h4>
+        <div class="demo-product-store">
+            <i class="fas fa-store"></i> ${product.store}
+        </div>
+        <div class="demo-product-price">
+            <span class="demo-current-price">$${product.currentPrice.toFixed(2)}</span>
+            <span class="demo-original-price">$${product.originalPrice.toFixed(2)}</span>
+            <span class="demo-discount">-${product.discount}%</span>
+        </div>
+        <div class="demo-product-meta">
+            <span><i class="fas fa-location-arrow"></i> ${product.distance}</span>
+            <span><i class="fas fa-star"></i> ${product.rating}</span>
+        </div>
+    `;
+    
+    return card;
+}
+
+// Show product details
+function showDemoProductDetails(product) {
+    currentDemoProduct = product;
+    demoQuantity = 1;
+    
+    // Update product details
+    document.getElementById('demoProductImage').src = product.image;
+    document.getElementById('demoProductName').textContent = product.name;
+    document.getElementById('demoProductStore').textContent = `${product.store} • ${product.culture}`;
+    document.getElementById('demoCurrentPrice').textContent = `$${product.currentPrice.toFixed(2)}`;
+    document.getElementById('demoOriginalPrice').textContent = `$${product.originalPrice.toFixed(2)}`;
+    document.getElementById('demoDiscount').textContent = `-${product.discount}%`;
+    document.getElementById('demoDistance').textContent = product.distance;
+    document.getElementById('demoRating').textContent = product.rating;
+    
+    // Update badges
+    const badgesContainer = document.getElementById('demoProductBadges');
+    badgesContainer.innerHTML = '';
+    product.badges.forEach(badge => {
+        const badgeElement = document.createElement('div');
+        badgeElement.className = `demo-badge ${badge}`;
+        badgeElement.textContent = badge.charAt(0).toUpperCase() + badge.slice(1);
+        badgesContainer.appendChild(badgeElement);
+    });
+    
+    // Update quantity and total
+    demoQuantityValue.textContent = demoQuantity;
+    updateDemoTotalPrice();
+    
+    showDemoScreen(demoProductDetails);
+}
+
+// Select other option
+function selectDemoOption(product) {
+    // Remove selected class from all cards
+    document.querySelectorAll('.demo-product-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked card
+    const selectedCard = document.querySelector(`[data-product-id="${product.id}"]`);
+    if (selectedCard) {
+        selectedCard.classList.add('selected');
+    }
+    
+    showDemoProductDetails(product);
+    showDemoToast("Product selection updated");
+}
+
+// Update total price
+function updateDemoTotalPrice() {
+    if (currentDemoProduct) {
+        const total = (currentDemoProduct.currentPrice * demoQuantity).toFixed(2);
+        demoTotalPrice.textContent = `$${total}`;
+    }
+}
+
+// Event Listeners for Demo
+demoSearchBtn.addEventListener('click', () => {
+    const searchText = demoSearchInput.value.trim();
+    if (searchText) {
+        generateDemoProductCards(searchText);
+    } else {
+        showDemoToast("Please enter a product to search");
+    }
+});
+
+demoSearchInput.addEventListener('focus', () => {
+    demoSearchHint.style.opacity = '1';
+});
+
+demoBackToSearch.addEventListener('click', () => {
+    showDemoScreen(demoSearchScreen);
+});
+
+demoBackToResults.addEventListener('click', () => {
+    showDemoScreen(demoResults);
+});
+
+demoSaveProduct.addEventListener('click', () => {
+    demoSaveProduct.classList.toggle('active');
+    demoSaveProduct.querySelector('i').classList.toggle('far');
+    demoSaveProduct.querySelector('i').classList.toggle('fas');
+    
+    const t = DEMO_TRANSLATIONS[savedLang] || DEMO_TRANSLATIONS['en'];
+    if (demoSaveProduct.classList.contains('active')) {
+        showDemoToast(t.savedMessage);
+    } else {
+        showDemoToast(t.removedMessage);
+    }
+});
+
+demoDecreaseQty.addEventListener('click', () => {
+    if (demoQuantity > 1) {
+        demoQuantity--;
+        demoQuantityValue.textContent = demoQuantity;
+        updateDemoTotalPrice();
+    }
+});
+
+demoIncreaseQty.addEventListener('click', () => {
+    demoQuantity++;
+    demoQuantityValue.textContent = demoQuantity;
+    updateDemoTotalPrice();
+});
+
+// View more functionality
+document.querySelectorAll('.view-more').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const t = DEMO_TRANSLATIONS[savedLang] || DEMO_TRANSLATIONS['en'];
+        if (link.id === 'viewMoreReviews') {
+            showDemoToast(t.reviewsMessage);
+        } else {
+            showDemoToast(t.prototypeMessage);
+        }
+    });
+});
+
+// Initialize demo with current language
+function initDemo() {
+    savedLang = localStorage.getItem('aslivo_lang') || 'en';
+    applyDemoTranslations(savedLang);
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initDemo);
+
+// Update demo when language changes
+const originalApplyLang = window.applyLang;
+window.applyLang = function(lang) {
+    if (originalApplyLang) {
+        originalApplyLang(lang);
+    }
+    savedLang = lang;
+    applyDemoTranslations(lang);
+};
+
 </script>
 </body>
 </html>
