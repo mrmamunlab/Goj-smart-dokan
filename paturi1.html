@@ -39,7 +39,7 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            padding-top: 100px; /* Increased from 80px */
+            padding-top: 100px;
         }
 
         .container {
@@ -153,7 +153,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 100px 0 100px; /* Reduced top padding from 160px */
+            padding: 100px 0 100px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -703,23 +703,25 @@
             }
         } 
 
-        /* Recognize & Match Demo Styles */
+        /* Recognize & Match Demo Styles - FIXED MARGINS AND PADDING */
         .demo-section {
             padding: 40px 0 20px;
             background: transparent;
             position: relative;
             width: 100%;
+            margin: 0; /* Remove horizontal margin */
         }
 
         .demo-container {
             max-width: 100%;
-            margin: 0 auto;
+            margin: 0; /* Remove margin */
             background: var(--white);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             overflow: hidden;
             border: 1px solid rgba(139, 92, 246, 0.1);
             position: relative;
+            width: 100%; /* Ensure full width */
         }
 
         .demo-container::before {
@@ -756,7 +758,7 @@
             padding: 20px;
         }
 
-        /* Search Input Demo */
+        /* Search Input Demo - FIXED INPUT VISIBILITY */
         .demo-search-container {
             position: relative;
             margin-bottom: 20px;
@@ -764,16 +766,17 @@
 
         .demo-search-input {
             width: 100%;
-            padding: 20px;
+            padding: 16px 20px; /* Increased padding for better visibility */
             border: 2px solid rgba(139, 92, 246, 0.2);
             border-radius: var(--radius);
             font-size: 1.1rem;
             transition: var(--transition);
             background: var(--white);
             box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
-            height: 60px; /* Fixed height for better cursor visibility */
-            min-height: 60px; /* Ensure minimum height */
-            resize: vertical; /* Allow vertical resizing */
+            height: 60px;
+            min-height: 100px;
+            resize: vertical;
+            line-height: 1.5; /* Better text visibility */
         }
 
         .demo-search-input:focus {
@@ -802,7 +805,7 @@
         .demo-search-options {
             display: flex;
             gap: 15px;
-            margin-top: 15px;
+            margin-top: 1px;
         }
 
         .demo-option-btn {
@@ -828,7 +831,7 @@
             box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
         }
 
-        /* Loading Animation */
+        /* Loading Animation - CHANGED TO STAR ANIMATION */
         .demo-loading {
             display: none;
             flex-direction: column;
@@ -843,13 +846,10 @@
         }
 
         .demo-loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(139, 92, 246, 0.2);
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+            font-size: 3rem;
+            color: var(--primary);
             margin-bottom: 20px;
+            animation: starPulse 1.5s ease-in-out infinite alternate, float 3s ease-in-out infinite;
         }
 
         .demo-loading-step {
@@ -932,7 +932,7 @@
             color: var(--primary-dark);
         }
 
-        /* Product Cards */
+        /* Product Cards - FIXED MOBILE RESPONSIVENESS */
         .demo-products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1044,12 +1044,14 @@
             color: var(--text-light);
         }
 
-        /* Product Details */
+        /* Product Details - FIXED MOBILE RESPONSIVENESS */
         .demo-product-details {
             display: none;
             animation: fadeInUp 0.6s ease;
-            padding-bottom: 80px; /* Extra space for bottom navigation */
+            padding-bottom: 80px;
             overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .demo-product-details.active {
@@ -1244,11 +1246,14 @@
             min-width: 140px;
         }
 
-        /* Order Summary Page */
+        /* Order Summary Page - FIXED MOBILE RESPONSIVENESS */
         .demo-order-summary {
             display: none;
             animation: fadeInUp 0.6s ease;
             padding-bottom: 20px;
+            overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .demo-order-summary.active {
@@ -1458,7 +1463,7 @@
             opacity: 1;
         }
 
-        /* Demo animations */
+        /* Demo animations - ADDED STAR PULSE */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1475,7 +1480,18 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive */
+        @keyframes starPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive - IMPROVED MOBILE FIXES */
         @media (max-width: 768px) {
             .demo-product-hero {
                 grid-template-columns: 1fr;
@@ -1498,22 +1514,41 @@
             .demo-buy-btn, .demo-support-btn {
                 width: 100%;
             }
+            
+            .demo-search-options {
+                flex-direction: column;
+            }
+            
+            .demo-order-product {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .demo-qr-code {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .demo-instruction-item {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         /* Quote Card Styles */
         .quote-section {
-            padding: 40px 0 20px; /* Reduced from 100px 0 20px */
+            padding: 40px 0 20px;
             display: flex;
             justify-content: center;
             animation: fadeInUp 1s ease-out;
-            margin-top: 0; /* Removed margin-top */
+            margin-top: 0;
         }
 
         .quote-card {
             background: linear-gradient(135deg, var(--white), #f8faff);
             border: 1px solid rgba(139, 92, 246, 0.1);
             border-radius: 24px;
-            padding: 30px 25px; /* Reduced padding */
+            padding: 30px 25px;
             text-align: center;
             max-width: 800px;
             width: 100%;
@@ -1551,11 +1586,11 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 15px; /* Reduced margin */
+            margin-bottom: 15px;
         }
 
         .quote-icon {
-            font-size: 2rem; /* Reduced size */
+            font-size: 2rem;
             color: var(--primary);
             opacity: 0.7;
             animation: float 4s ease-in-out infinite;
@@ -1568,7 +1603,7 @@
         }
 
         .quote-text {
-            font-size: 1.2rem; /* Reduced size */
+            font-size: 1.2rem;
             font-weight: 600;
             line-height: 1.4;
             color: var(--text-dark);
@@ -1642,11 +1677,11 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .quote-section {
-                padding: 30px 0 15px; /* Reduced padding */
+                padding: 30px 0 15px;
             }
 
             .quote-card {
-                padding: 25px 20px; /* Reduced padding */
+                padding: 25px 20px;
                 margin: 0 15px;
             }
 
@@ -1656,22 +1691,22 @@
             }
 
             .quote-text {
-                font-size: 1.1rem; /* Reduced size */
+                font-size: 1.1rem;
                 text-align: center;
             }
 
             .quote-icon {
-                font-size: 1.8rem; /* Reduced size */
+                font-size: 1.8rem;
             }
         }
 
         @media (max-width: 480px) {
             .quote-text {
-                font-size: 1rem; /* Reduced size */
+                font-size: 1rem;
             }
 
             .quote-card {
-                padding: 20px 15px; /* Reduced padding */
+                padding: 20px 15px;
             }
         }
 
@@ -1857,7 +1892,7 @@
                         </div>
                     </div>
                     
-                    <!-- Recognize & Match Demo Section - Moved inside core1 -->
+                    <!-- Recognize & Match Demo Section - FIXED MARGINS AND PADDING -->
                     <section class="demo-section" id="demoSection">
                         <div class="demo-container">
                             <div class="demo-content">
@@ -1885,9 +1920,11 @@
                                     </button>
                                 </div>
                                 
-                                <!-- Loading Screen -->
+                                <!-- Loading Screen - CHANGED TO STAR ANIMATION -->
                                 <div class="demo-loading" id="demoLoading">
-                                    <div class="demo-loading-spinner"></div>
+                                    <div class="demo-loading-spinner">
+                                        <i class="fas fa-star"></i>
+                                    </div>
                                     <div class="demo-loading-step" id="demoLoadingStep">Analyzing...</div>
                                     <div class="demo-loading-progress">
                                         <div class="demo-loading-progress-bar" id="demoLoadingProgress"></div>
@@ -2393,7 +2430,7 @@
                 featuresTitle: 'Paano Gumagana ang Aslivo',
                 featuresDesc: 'Tatlong madaling paraan para mahanap ang hinahanap mo',
                 c1Title: 'Recognize & Match (core)',
-                c1Desc: 'Mag-upload ng larawan o i-scan ang barcode — ipinapakita ng Aslivo ang pinagkakatiwalaang lokal na katumbas, may reviews at badge.',
+                c1Desc: 'Mag-upload ng larawan atau i-scan ang barcode — ipinapakita ng Aslivo ang pinagkakatiwalaang lokal na katumbas, may reviews at badge.',
                 c2Title: 'Fresh arrivals & pre-order',
                 c2Desc: 'Fresh arrivals & pre-order',
                 c3Title: 'Exclusive local offers',
@@ -2698,6 +2735,7 @@
         let orderTimer = null;
         let countdownInterval = null;
         let currentOrderId = null;
+        let demoLoadingInterval = null;
 
         // Demo Elements
         const demoSearchScreen = document.getElementById('demoSearchScreen');
@@ -2761,6 +2799,16 @@
             demoSearchHint.textContent = t.searchHint;
         }
 
+        // Reset demo loading
+        function resetDemoLoading() {
+            demoLoadingStep.textContent = "";
+            demoLoadingProgress.style.width = '0%';
+            if (demoLoadingInterval) {
+                clearInterval(demoLoadingInterval);
+                demoLoadingInterval = null;
+            }
+        }
+
         // Show demo toast
         function showDemoToast(message) {
             document.getElementById('demoToastMessage').textContent = message;
@@ -2791,37 +2839,56 @@
             }
         }
 
-        // Simulate search process
+        // Simulate search process - FIXED LOGIC
         function simulateSearchProcess(searchTerm) {
             showDemoScreen(demoLoading);
+            resetDemoLoading();
             
-            const steps = [
-                { text: "Analyzing...", icon: "fas fa-search" },
-                { text: "Finding matches...", icon: "fas fa-list" },
-                { text: "Matching preferences...", icon: "fas fa-check" },
-                { text: "I've got 3 matches!", icon: "fas fa-trophy" }
+            const searchData = DEMO_PRODUCTS[searchTerm.toLowerCase()];
+            const isValidSearch = searchData !== undefined;
+            
+            const steps = isValidSearch ? [
+                { text: "Analyzing your search...", icon: "fas fa-search" },
+                { text: "Finding local matches...", icon: "fas fa-list" },
+                { text: "Checking preferences...", icon: "fas fa-check" },
+                { text: "Found 3 perfect matches!", icon: "fas fa-trophy" }
+            ] : [
+                { text: "Analyzing your search...", icon: "fas fa-search" },
+                { text: "Finding local matches...", icon: "fas fa-list" },
+                { text: "Checking preferences...", icon: "fas fa-check" },
+                { text: "No matches found. Try demo keywords.", icon: "fas fa-exclamation-circle" }
             ];
             
             let currentStep = 0;
             demoLoadingProgress.style.width = '0%';
             
-            const stepInterval = setInterval(() => {
+            demoLoadingInterval = setInterval(() => {
                 if (currentStep < steps.length) {
                     demoLoadingStep.innerHTML = `<i class="${steps[currentStep].icon}"></i> ${steps[currentStep].text}`;
                     demoLoadingProgress.style.width = `${(currentStep + 1) * 25}%`;
                     currentStep++;
                 } else {
-                    clearInterval(stepInterval);
-                    generateDemoProductCards(searchTerm);
+                    clearInterval(demoLoadingInterval);
+                    if (isValidSearch) {
+                        generateDemoProductCards(searchTerm);
+                    } else {
+                        // Show error and return to search
+                        setTimeout(() => {
+                            const t = DEMO_TRANSLATIONS[demoCurrentLang] || DEMO_TRANSLATIONS['en'];
+                            showDemoToast(t.searchHint);
+                            showDemoScreen(demoSearchScreen);
+                        }, 1000);
+                    }
                 }
-            }, 5000); // 5 seconds per step
+            }, 2500); // Reduced from 5000ms to 1500ms for better UX
         }
 
         // Generate product cards
         function generateDemoProductCards(searchTerm) {
             const searchData = DEMO_PRODUCTS[searchTerm.toLowerCase()];
             if (!searchData) {
-                showDemoToast("Try 'Ruchi Chanachur' or 'Arabic Sweets' to see demo results");
+                const t = DEMO_TRANSLATIONS[demoCurrentLang] || DEMO_TRANSLATIONS['en'];
+                showDemoToast(t.searchHint);
                 showDemoScreen(demoSearchScreen);
                 return;
             }
@@ -3086,8 +3153,10 @@
         demoSearchBtn.addEventListener('click', () => {
             const searchText = demoSearchInput.value.trim();
             if (searchText) {
+                resetDemoLoading(); // Reset before starting new search
                 simulateSearchProcess(searchText);
             } else {
+                const t = DEMO_TRANSLATIONS[demoCurrentLang] || DEMO_TRANSLATIONS['en'];
                 showDemoToast("Please enter a product to search");
             }
         });
